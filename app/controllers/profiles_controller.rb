@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
   def index
-    @profiles = Profile.all
+    if params[:query].present?
+      @profiles = Profile.global_search(params[:query])
+    else
+      @profiles = Profile.all
+    end
   end
 
   def show
