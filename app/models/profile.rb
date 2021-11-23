@@ -13,7 +13,7 @@ class Profile < ApplicationRecord
   pg_search_scope :global_search,
     against: [ :village, :business_type ],
     associated_against: {
-      user: [ :first_name, :last_name ]
+      user: [ :first_name, :last_name, :email ]
     },
     using: {
       tsearch: { prefix: true }
