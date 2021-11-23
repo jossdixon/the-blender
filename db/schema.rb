@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_093414) do
+ActiveRecord::Schema.define(version: 2021_11_23_020855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "loanees", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "loan_id", null: false
+    t.float "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["loan_id"], name: "index_loanees_on_loan_id"
+    t.index ["user_id"], name: "index_loanees_on_user_id"
+  end
+
+  create_table "loans", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "due_by"
+    t.float "instalments"
+    t.date "start_date"
+    t.integer "status"
+    t.integer "weeks"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_loans_on_user_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -41,5 +63,17 @@ ActiveRecord::Schema.define(version: 2021_11_22_093414) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weekly_payments", force: :cascade do |t|
+    t.bigint "loanee_id", null: false
+    t.float "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["loanee_id"], name: "index_weekly_payments_on_loanee_id"
+  end
+
+  add_foreign_key "loanees", "loans"
+  add_foreign_key "loanees", "users"
+  add_foreign_key "loans", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "weekly_payments", "loanees"
 end
