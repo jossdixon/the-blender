@@ -9,6 +9,11 @@ require 'csv'
 User.destroy_all
 Profile.destroy_all
 
+puts "Seeding..."
+User.create(first_name: 'Michiharu', last_name: 'Ono', email: 'michi@theblender.one', password: '123450987' )
+
+
+
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row, header_converters: :symbol }
 filepath    = File.join(__dir__,'users.csv')
 
@@ -34,3 +39,5 @@ profile = Profile.new(
 )
 profile.save!
 end
+puts "Seeding done."
+
