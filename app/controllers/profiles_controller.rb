@@ -11,6 +11,7 @@ before_action :set_profile, only: [:show]
   end
 
   def show
+    @user = User.new
   end
 
   def new
