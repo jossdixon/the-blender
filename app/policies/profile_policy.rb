@@ -18,5 +18,4 @@ class ProfilePolicy < ApplicationPolicy
   def user_is_loan_officer?
     user.profile.nil?
   end
-
 end
