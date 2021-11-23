@@ -3,10 +3,10 @@ before_action :set_profile, only: [:show]
   def index
     if params[:query].present?
       @profiles = Profile.global_search(params[:query])
-      authorize @profiles
+      @profiles = policy_scope(Profile)
     else
       @profiles = Profile.all
-      authorize @profiles
+      @profiles = policy_scope(Profile)
     end
   end
 
