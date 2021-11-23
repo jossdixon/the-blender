@@ -13,15 +13,15 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for  @weekly_payment do |f| %>
-        <%= f.input amount: %>
-        <%= f.submit : 'btn btn-outline-dark' %>
+        <%= simple_form_for  [@loanee, @weekly_payment] do |f| %>
+        <%= f.input :amount %>
+        <%= f.submit class: 'btn btn-outline-dark' %>
         <% end %>
       </div>
-      <div class="modal-footer">
+      <%# <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </div> %>
     </div>
   </div>
 </div>

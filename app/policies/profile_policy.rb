@@ -15,6 +15,10 @@ class ProfilePolicy < ApplicationPolicy
   #   user_is_loan_officer?
   # end
 
+  def show?
+    user_is_loan_officer?
+  end
+
   def create?
     user_is_loan_officer?
   end
