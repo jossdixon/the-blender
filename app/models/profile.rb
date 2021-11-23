@@ -1,6 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
+  has_one_attached :photo
+
   validates :village, presence: true
   validates :phone_number, presence: true
   validates :birthday, presence: true
