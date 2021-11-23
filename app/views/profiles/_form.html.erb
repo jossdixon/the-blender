@@ -1,0 +1,8 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.simple_fields_for :profile do |profile_form| %>
+    <%= profile_form.input :village %>
+    <%= profile_form.input :phone_number %>
+    <%= profile_form.input :join_date %>
+    <%= profile_form.input :business_type %>
+  <% end %>
+<% end %>
