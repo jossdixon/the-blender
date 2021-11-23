@@ -5,6 +5,10 @@ class ProfilePolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    user_is_loan_officer?
+  end
+
   def create?
     user_is_loan_officer?
   end

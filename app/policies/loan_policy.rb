@@ -5,6 +5,7 @@ class LoanPolicy < ApplicationPolicy
         scope.all
       else
         scope.where(user.id == loan.user_id)
+      end
     end
   end
 
