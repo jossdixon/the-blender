@@ -1,0 +1,2 @@
+class WeeklyPaymentsController < ApplicationController
+end
