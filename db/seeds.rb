@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
+require "open-uri"
+
 User.destroy_all
 Profile.destroy_all
 
@@ -29,6 +31,7 @@ birthday = row[:birthday]
 phone_number = row[:phone_number]
 join_date = row[:join_date]
 business_type = row[:business_type]
+file = URI.open(row[:photo_url])
 profile = Profile.new(
   village: village,
   birthday: birthday,
@@ -37,7 +40,7 @@ profile = Profile.new(
   business_type: business_type,
   user: user
 )
+profile.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 profile.save!
 end
 puts "Seeding done."
-
