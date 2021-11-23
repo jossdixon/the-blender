@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :loanees
   has_many :loan_groups, through: :loanees, source: :loans
   has_one :profile
+  accepts_nested_attributes_for :profile
 
   validates :first_name, presence: true
   validates :last_name, presence: true
