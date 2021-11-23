@@ -1,3 +1,10 @@
 <div class="container">
   <%= render 'search'%>
+  <%# The line below is a test. Delete if you wish. %>
+  <% if @profiles.any? %>
+    <% @profiles.each do |profile| %>
+    <%= profile.village %>
+    <% end %>
+  <% end %>
+  <%# The above below is a test. Delete if you wish. %>
 </div>
