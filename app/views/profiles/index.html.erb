@@ -1,2 +1,8 @@
 <div class="container">
+  <%= render 'search'%>
+  <%# The line below is a test. Delete if you wish. %>
+    <% @profiles.each do |profile| %>
+      <p><%= profile.village %></p>
+    <% end %>
+  <%# The above below is a test. Delete if you wish. %>
 </div>
