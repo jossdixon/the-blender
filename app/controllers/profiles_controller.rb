@@ -1,7 +1,13 @@
 class ProfilesController < ApplicationController
 before_action :set_profile, only: [:show]
   def index
-    @profiles = policy_scope(Profile)
+    if params[:query].present?
+      @profiles = Profile.global_search(params[:query])
+      authorize @profiles
+    else
+      @profiles = Profile.all
+      authorize @profiles
+    end
   end
 
   def show
