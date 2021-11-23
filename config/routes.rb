@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :show]
   resources :loanees, only: [:new, :create, :show] do
     resources :loans, only: [:new, :create]
-    resources :payments, only: [:new, :create]
+    resources :weekly_payments, only: [:new, :create]
   end
 end
