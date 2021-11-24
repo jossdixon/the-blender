@@ -1,0 +1,6 @@
+<h1>Loan Show Page</h1>
+<p>Loan Started On: <%= @loan.start_date.strftime("%A %b %d") %></p>
+<p>Loan Duration: <%= @loan.weeks %> weeks</p>
+<% @loan.loanees.each_with_index do |loanee, index| %>
+  <p> Loanee <%= index +1 %> is <%= link_to loanee.user.full_name, profile_path(loanee.user_id) %>, borrowing $<%= loanee.total %></p>
+<% end %>
