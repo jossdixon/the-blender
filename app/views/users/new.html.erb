@@ -1,0 +1,15 @@
+<%= simple_form_for @user, url: user_profile_path do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+
+  <%= f.simple_fields_for :profile do |profile_form| %>
+    <%= profile_form.input :village %>
+    <%= profile_form.input :birthday %>
+    <%= profile_form.input :phone_number %>
+    <%= profile_form.input :join_date %>
+    <%= profile_form.input :business_type %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
