@@ -2,8 +2,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :loans # loan officer
-  has_many :loanees
-  has_many :loan_groups, through: :loanees, source: :loans
+  has_many :loanees, through: :loans
+  has_many :debts, class_name: 'Loanee' # borrower
+  has_one :loan_groups, through: :loanees, source: :loans
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
@@ -21,5 +22,9 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
+  def active_debt
+    debts.active.first
   end
 end

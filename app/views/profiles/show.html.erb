@@ -11,6 +11,6 @@
     <p>Phone Number: <%= @profile.phone_number %></p>
     <p>Date of Birth: <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
     <p>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></p>
-    <%= link_to "Take Payment", "#", class:"btn btn-gradient" %>
+    <%= link_to "Receive Payment", new_loanee_weekly_payment_path(@profile.user.active_debt), class:"btn btn-gradient" %>
   </div>
 </div>
