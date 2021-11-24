@@ -1,6 +1,6 @@
 class LoaneesController < ApplicationController
   def new
-    
+
   end
 
   def create
@@ -10,5 +10,10 @@ class LoaneesController < ApplicationController
   end
 
   def update
+  end
+
+  def show
+    @loanee = Loanee.find(params[:id])
+    authorize @loanee
   end
 end

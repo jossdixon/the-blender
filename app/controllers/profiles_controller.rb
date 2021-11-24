@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-before_action :set_profile, only: [:show]
+  before_action :set_profile, only: [:show]
   def index
     if params[:query].present?
       @profiles = Profile.global_search(params[:query])

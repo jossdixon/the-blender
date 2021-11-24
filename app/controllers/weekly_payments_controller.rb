@@ -1,17 +1,24 @@
 class WeeklyPaymentsController < ApplicationController
   def index
-    @weekly_payments = policy_scope(Weekly_Payment)
+    @weekly_payments = policy_scope(WeeklyPayment)
   end
 
   def new
-    @weekly_payment = Weekly_Payment.new
+    @loanee = Loanee.find(params[:loanee_id])
+    @weekly_payment = WeeklyPayment.new
     authorize @weekly_payment
   end
 
   def create
-    @weekly_payment = Weekly_Payment.new(weekly_payment_params)
+    @loanee = Loanee.find(params[:loanee_id])
+    @weekly_payment = WeeklyPayment.new(weekly_payment_params)
+    @weekly_payment.loanee = @loanee
     authorize @weekly_payment
-    @weekly_payment.save
+    if @weekly_payment.save
+      redirect_to loan_loanee_weekly_payments_path
+    else
+      render :new
+    end
   end
 
   private
