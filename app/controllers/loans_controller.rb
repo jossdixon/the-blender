@@ -9,13 +9,21 @@ before_action :set_loan, only: [ :show ]
 
   def new
     @loan = Loan.new
+    @loan.loanees.build
     authorize @loan
   end
 
   def create
     @loan = Loan.new(loan_params)
+    @loan.user = current_user
     authorize @loan
-    @loan.save
+    if @loan.save
+      redirect_to loan_path(@loan)
+    else
+      raise
+      render :new
+    end
+
   end
 
   private
@@ -26,6 +34,6 @@ before_action :set_loan, only: [ :show ]
   end
 
   def loan_params
-    params.require(:loan).permit(:due_by, :instalments, :start_date, :status, :weeks)
+    params.require(:loan).permit(:weeks, :start_date, loanees_attributes: [ :user_id, :total, :status])
   end
 end

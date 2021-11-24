@@ -14,4 +14,12 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def to_label
+    full_name
+  end
+
+  def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
 end
