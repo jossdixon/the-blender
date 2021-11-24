@@ -5,4 +5,7 @@
   <p><%= weekly_payment.created_at %></p>
   <p>$ <%= weekly_payment.amount %></p>
   <% end %>
+  <%= link_to profile_path(@weekly_payments.first.loanee.user.profile) do%>
+    <p><i class="fas fa-undo"></i></p>
+  <% end %>
 </div>
