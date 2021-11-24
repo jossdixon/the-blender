@@ -1,8 +1,10 @@
-<%= render 'search'%>
 <div class="container">
+  <div class="container p-2">
+    <%= render 'search' %>
+  </div>
   <div class="card-profile">
     <%= cl_image_tag(@profile.photo.key, :transformation=>[
-  {:gravity=>"face", :height=>300, :width=>300, :crop=>"fill"},
+  {:gravity=>"face", :height=>200, :width=>200, :crop=>"fill"},
   {:radius=>"max"}
   ]) %>
     <h1><%= @profile.user.full_name %></h1>
@@ -11,6 +13,10 @@
     <p>Phone Number: <%= @profile.phone_number %></p>
     <p>Date of Birth: <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
     <p>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></p>
-    <%= link_to "Receive Payment", new_loanee_weekly_payment_path(@profile.user.active_debt), class:"btn btn-gradient" %>
+    <% if @profile.user.active_debt %>
+      <%= link_to "Receive Payment", new_loanee_weekly_payment_path(@profile.user.active_debt), class: "btn btn-create" %>
+    <% else %>
+      <p> This user has no active debts. </p>
+    <% end %>
   </div>
 </div>
