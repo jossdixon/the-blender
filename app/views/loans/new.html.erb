@@ -1,0 +1,18 @@
+<h1>Create Loan Page</h1>
+<%= simple_form_for @loan do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :weeks %>
+  <%= f.simple_fields_for :loanees do |loanee_form| %>
+    <%= loanee_form.association :user %>
+    <%= loanee_form.input :total %>
+  <% end %>
+  <%= f.simple_fields_for :loanees do |loanee_form| %>
+    <%= loanee_form.association :user %>
+    <%= loanee_form.input :total %>
+  <% end %>
+  <%= f.simple_fields_for :loanees do |loanee_form| %>
+    <%= loanee_form.association :user %>
+    <%= loanee_form.input :total %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

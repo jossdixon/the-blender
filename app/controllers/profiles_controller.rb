@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @weekly_payment = WeeklyPayment.new
+    @user = User.new
   end
 
   def new
