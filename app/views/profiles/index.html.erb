@@ -1,4 +1,8 @@
 <div class="container">
   <%= render 'search'%>
   <div><%= link_to "Create a profile",  new_user_path, class:"btn btn-primary" %></div>
+  <% @profiles.each do |profile| %>
+  <p><%= profile.village %></p>
+  <p><%= profile.user.first_name %></p>
+  <% end %>
 </div>
