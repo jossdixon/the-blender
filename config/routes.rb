@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :profiles, only: [:index, :show, :new]
   resources :loans, only: [:new, :create, :show] do
-    resources :loanees, only: [:new, :create, :show] do
-      resources :weekly_payments, only: [:new, :create, :index]
-    end
+    resources :loanees, only: [:new, :create]
   end
-  resources :users, only: [:new ]
+  resources :loanees, only: [:show] do
+    resources :weekly_payments, only: [:new, :create, :index]
+  end
+  resources :users, only: [:new]
   post 'user_profile', to: "users#create", as: 'user_profile'
 end

@@ -15,7 +15,7 @@ class WeeklyPaymentsController < ApplicationController
     @weekly_payment.loanee = @loanee
     authorize @weekly_payment
     if @weekly_payment.save
-      redirect_to loan_loanee_weekly_payments_path
+      redirect_to loanee_weekly_payments_path
     else
       render :new
     end
