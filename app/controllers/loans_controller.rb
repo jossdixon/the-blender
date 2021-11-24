@@ -20,7 +20,6 @@ before_action :set_loan, only: [ :show ]
     if @loan.save
       redirect_to loan_path(@loan)
     else
-      raise
       render :new
     end
 
