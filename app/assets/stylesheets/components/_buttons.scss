@@ -1,3 +1,42 @@
+<<<<<<< HEAD
+.btn-create {
+  background-color: $blue;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.btn-create:hover,
+.btn-create:focus {
+  background-color: $blue;
+}
+
+.btn-create:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.btn-create:active {
+  background-color: $aqua-blue;
+  box-shadow: none;
+=======
 .btn-ghost {
   color: #4A4A4A;
   border: 1px solid #4A4A4A;
@@ -38,4 +77,4 @@
 .btn-gradient:hover {
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
-}
+>>>>>>> 76c8db60a934d863189dbd4690ccf2d9524fd497}

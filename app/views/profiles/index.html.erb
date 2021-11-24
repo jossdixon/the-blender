@@ -1,8 +1,19 @@
 <div class="container">
   <%= render 'search'%>
-  <div><%= link_to "Create a profile",  new_user_path, class:"btn btn-primary" %></div>
-  <% @profiles.each do |profile| %>
-  <p><%= profile.village %></p>
-  <p><%= profile.user.first_name %></p>
-  <% end %>
-</div>
+<div class="row align-items-start">
+    <div class="row">
+        <% @profiles.each do |profile| %>
+        <div class="col-sm-4">
+          <div class="card" style="width: 18rem;">
+              <%= cl_image_tag(profile.photo.key, width: 286, height: 180, crop: :thumb, gravity: :face) %>
+              <div class="card-body">
+                <h2 class="card-name"><%= profile.user.first_name %></h2>
+                <h3 class="card-last_name"> <%= profile.user.last_name %></h3>
+                <p class="card-village"><%= profile.village %></p>
+                <a href="#" class="btn btn-primary">Create Loan</a>
+              </div>
+          </div>
+        </div>
+        <% end %>
+  </div>
+ </div>

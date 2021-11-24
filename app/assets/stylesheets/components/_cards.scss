@@ -1,3 +1,54 @@
+<<<<<<< HEAD
+.card {
+  filter: drop-shadow(2px 4px 8px #585858);
+  margin: 5px;
+}
+
+.card-body {
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+}
+
+
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+=======
 .card-profile {
   width: 75%;
   margin-top: 24px;
@@ -11,5 +62,6 @@
   }
   h1, h2, h3 {
     padding: 8px 0px;
+>>>>>>> 76c8db60a934d863189dbd4690ccf2d9524fd497
   }
 }
