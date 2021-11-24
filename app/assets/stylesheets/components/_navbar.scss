@@ -1,8 +1,7 @@
 .navbar-theblender {
   justify-content: space-between;
   background: $blue;
-  filter: drop-shadow(2px 4px 8px #585858);
-
+  filter: drop-shadow(0 0 15px rgba(0,0,0,0.2));
 }
 
 .navbar-theblender .navbar-collapse {
@@ -13,5 +12,5 @@
   width: 40px;
 }
 .nav-link {
-  color: white;
+  color: whitesmoke;
 }
