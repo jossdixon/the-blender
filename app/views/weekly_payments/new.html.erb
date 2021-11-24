@@ -1,3 +1,6 @@
 <div class="container">
   <%= render 'form', loanee:@loanee%>
+  <%= link_to profile_path(@loanee.user.profile) do%>
+    <p><i class="fas fa-undo"></i></p>
+  <% end %>
 </div>
