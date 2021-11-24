@@ -10,7 +10,7 @@
                 <h2 class="card-name"><%= profile.user.first_name %></h2>
                 <h3 class="card-last_name"> <%= profile.user.last_name %></h3>
                 <p class="card-village"><%= profile.village %></p>
-                <a href="#" class="btn btn-primary">Create Loan</a>
+                <%= link_to "Receive Payment",  new_loan_loanee_weekly_payment_path(@profile.user.loanee, ), class:"btn btn-outline-dark" %>
               </div>
           </div>
         </div>
