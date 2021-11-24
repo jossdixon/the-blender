@@ -1,20 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 require "open-uri"
 
+Loan.destroy_all
 User.destroy_all
 Profile.destroy_all
 
 puts "Seeding..."
 User.create(first_name: 'Michiharu', last_name: 'Ono', email: 'michi@theblender.one', password: '123450987' )
-
-
 
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row, header_converters: :symbol }
 filepath    = File.join(__dir__,'users.csv')
@@ -42,5 +34,21 @@ profile = Profile.new(
 )
 profile.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 profile.save!
+end
+puts "Creating loans..."
+5.times do
+  loan = Loan.new(
+    weeks: (4..16).to_a.sample,
+    start_date: Date.today + rand(1..30),
+    user: User.first
+  )
+  loan.save!
+  3.times do
+    Loanee.create!(
+      loan: loan,
+      total: rand(1000..5000),
+      user: User.includes(:loanees, :profile).where(loanees: { user_id: nil }).where.not(profiles: { user_id: nil }).sample
+    )
+  end
 end
 puts "Seeding done."

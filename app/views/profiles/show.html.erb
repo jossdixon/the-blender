@@ -1,7 +1,4 @@
 <div class="container">
-<%= render 'search'%>
-<%# <%= render 'payment_popup', loanee: @profile.user.loanee%> 
-
-<h1><%= "#{@profile.user.first_name} #{@profile.user.last_name}" %></h1>
-
+  <%= render 'search'%>
+  <h1><%= @profile.user.full_name %></h1>
 </div>
