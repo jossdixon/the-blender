@@ -1,4 +1,4 @@
-<%= simple_form_for [@loanee, @weekly_payment], url:loan_loanee_weekly_payments_path do |f| %>
+<%= simple_form_for [@loanee, @weekly_payment], url:loanee_weekly_payments_path do |f| %>
   <%= f.input :amount %>
   <%= f.submit "Receive Payment", class: "btn btn-primary" %>
 <% end %>
