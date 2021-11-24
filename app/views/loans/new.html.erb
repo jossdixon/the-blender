@@ -1,18 +1,27 @@
-<h1>Create Loan Page</h1>
-<%= simple_form_for @loan do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :weeks %>
-  <%= f.simple_fields_for :loanees do |loanee_form| %>
-    <%= loanee_form.association :user %>
-    <%= loanee_form.input :total %>
-  <% end %>
-  <%= f.simple_fields_for :loanees do |loanee_form| %>
-    <%= loanee_form.association :user %>
-    <%= loanee_form.input :total %>
-  <% end %>
-  <%= f.simple_fields_for :loanees do |loanee_form| %>
-    <%= loanee_form.association :user %>
-    <%= loanee_form.input :total %>
-  <% end %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1>Create Loan</h1>
+  <br>
+  <br>
+    <%= simple_form_for @loan do |f| %>
+      <%= f.input :start_date %>
+      <%= f.input :weeks %>
+      <hr>
+      <%= f.simple_fields_for :loanees do |loanee_form| %>
+        <%= loanee_form.association :user, label: 'Loanee 1' %>
+        <%= loanee_form.input :total, label: 'Amount'  %>
+      <% end %>
+      <hr>
+      <%= f.simple_fields_for :loanees do |loanee_form| %>
+        <%= loanee_form.association :user, label: 'Loanee 2'  %>
+        <%= loanee_form.input :total, label: 'Amount'  %>
+      <% end %>
+      <hr>
+      <%= f.simple_fields_for :loanees do |loanee_form| %>
+        <%= loanee_form.association :user, label: 'Loanee 3'  %>
+        <%= loanee_form.input :total, label: 'Amount'  %>
+      <% end %>
+      <hr>
+      <br>
+      <%= f.submit class:"btn btn-primary"%>
+    <% end %>
+</div>
