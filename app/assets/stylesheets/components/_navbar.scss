@@ -1,12 +1,17 @@
-.navbar-lewagon {
+.navbar-theblender {
   justify-content: space-between;
-  background: white;
+  background: $blue;
+  filter: drop-shadow(2px 4px 8px #585858);
+
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-theblender .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-theblender .navbar-brand img {
   width: 40px;
+}
+.nav-link {
+  color: white;
 }
