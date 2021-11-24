@@ -13,6 +13,9 @@ class LoaneePolicy < ApplicationPolicy
     user_is_loan_officer?
   end
 
+  def show?
+    user_is_loan_officer?
+  end
   private
 
   def user_is_loan_officer?

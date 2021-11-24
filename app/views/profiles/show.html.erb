@@ -1,5 +1,16 @@
-<div class="container">
 <%= render 'search'%>
-
-<h1><%= "#{@profile.user.first_name} #{@profile.user.last_name}" %></h1>
+<div class="container">
+  <div class="card-profile">
+    <%= cl_image_tag(@profile.photo.key, :transformation=>[
+  {:gravity=>"face", :height=>300, :width=>300, :crop=>"fill"},
+  {:radius=>"max"}
+  ]) %>
+    <h1><%= @profile.user.full_name %></h1>
+    <h2><%= @profile.village %></h2>
+    <h3><%= @profile.business_type %></h3>
+    <p>Phone Number: <%= @profile.phone_number %></p>
+    <p>Date of Birth: <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
+    <p>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></p>
+    <%= link_to "Take Payment", "#", class:"btn btn-gradient" %>
+  </div>
 </div>

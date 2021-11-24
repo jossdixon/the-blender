@@ -21,6 +21,10 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= profile_form.input :village %>
+    <%= profile_form.input :phone_number %>
+    <%= profile_form.input :join_date %>
+    <%= profile_form.input :business_type %>
   </div>
 
   <div class="form-actions">
