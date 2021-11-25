@@ -2,6 +2,11 @@ class WeeklyPaymentsController < ApplicationController
   def index
     @weekly_payments = policy_scope(WeeklyPayment)
     @loanee = Loanee.find(params[:loanee_id])
+    past_payments = 0
+    @loanee.weekly_payments.each do |payment|
+      past_payments += payment.amount
+    end
+    @progress = past_payments/@loanee.total * 100
   end
 
   def new
