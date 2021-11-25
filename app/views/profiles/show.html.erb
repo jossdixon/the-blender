@@ -18,5 +18,6 @@
     <% else %>
       <p> This user has no active debts. </p>
     <% end %>
+    <%= link_to "Repayment History", loanee_weekly_payments_path(@profile.user), class: "btn btn-create" %>
   </div>
 </div>
