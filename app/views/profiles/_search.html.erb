@@ -1,12 +1,12 @@
 <div class="mb-4">
   <%= form_tag profiles_path, class: "d-inline w-100", method: :get do %>
     <div class="row d-flex">
-    <div class="flex-grow-1"><%= text_field_tag :query,
+      <div class="flex-grow-1"><%= text_field_tag :query,
       params[:query],
       class: "form-control",
       placeholder: "Find a name"
     %></div>
-    <div><%= submit_tag "Search", class: "btn btn-primary" %></div>
+      <div><%= submit_tag "Search", class: "btn btn-primary" %></div>
     </div>
   <% end %>
 </div>
