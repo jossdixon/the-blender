@@ -1,4 +1,4 @@
 <%= simple_form_for [@loanee, @weekly_payment], url:loanee_weekly_payments_path do |f| %>
   <%= f.input :amount, input_html: { min: '0', step: 'any' } %>
-  <%= f.submit "Receive Payment", class: "btn btn-primary" %>
+  <%= f.submit "Receive Payment", data: {confirm: "Are you sure this information is correct?"}, class: "btn btn-primary" %>
 <% end %>
