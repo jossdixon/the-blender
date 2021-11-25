@@ -15,9 +15,9 @@
     <p>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></p>
     <% if @profile.user.active_debt %>
       <%= link_to "Receive Payment", new_loanee_weekly_payment_path(@profile.user.active_debt), class: "btn btn-create" %>
+      <%= link_to "Repayment History", loanee_weekly_payments_path(Loanee.find(@profile.user.active_debt.id)), class: "btn btn-create" %>
     <% else %>
       <p> This user has no active debts. </p>
     <% end %>
-    <%= link_to "Repayment History", loanee_weekly_payments_path(Loanee.find(@profile.user.active_debt.id)), class: "btn btn-create" %>
   </div>
 </div>
