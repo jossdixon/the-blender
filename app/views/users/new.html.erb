@@ -1,4 +1,5 @@
 <div class="container">
+  <h1>Create a profile</h1>
   <%= simple_form_for @user, url: user_profile_path do |f| %>
     <%= f.input :email %>
     <%= f.input :password %>
@@ -11,6 +12,6 @@
       <%= profile_form.input :join_date %>
       <%= profile_form.input :business_type %>
     <% end %>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   <% end %>
 </div>
