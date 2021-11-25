@@ -5,8 +5,11 @@
   <% if @profile.user.active_debt &&  total - paid_sum > 0 %>
     <%= link_to "Payment", new_loanee_weekly_payment_path(@profile.user.active_debt), class: "btn btn-create"  %>
     <%= link_to "History", loanee_weekly_payments_path(Loanee.find(@profile.user.active_debt.id)), class: "btn btn-create" %>
+  <% elsif @profile.user.active_debt &&  total - paid_sum == 0%>
+    <p class="mark-yellow"> This user has paid off the loan. </p>
   <% else %>
-    <p class="mark"> This user has no active debts. </p>
+    <p class="mark-red"> This user has over-paid. </p>
+    <%= link_to "History", loanee_weekly_payments_path(Loanee.find(@profile.user.active_debt.id)), class: "btn btn-create" %>
   <% end %>
 <% else %>
   <p class="mark"> This user has no active debts. </p>
