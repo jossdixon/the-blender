@@ -5,15 +5,17 @@
   <p>Loan ID: <%= @loanee.loan.id %></p>
   <p>Loan Start Date: <%= @loanee.loan.start_date %></p>
   <% if @loanee.weekly_payments.any?%>
-  <div class="progress">
-    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
-  <%= render 'table', loanee:@loanee %>
-  <%= link_to profile_path(@loanee.user.profile) do%>
-    <p><i class="fas fa-undo"></i></p>
-  <% end %>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <%= render 'table', loanee:@loanee %>
+    <%= link_to profile_path(@loanee.user.profile) do%>
+      <p><i class="fas fa-undo"></i></p>
+    <% end %>
   <% else %>
-  <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
+    <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
+    <%= link_to profile_path(@loanee.user.profile) do%>
+      <p><i class="fas fa-undo"></i></p>
+    <% end %>
   <% end %>
-
 </div>
