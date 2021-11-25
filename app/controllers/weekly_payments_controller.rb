@@ -1,6 +1,7 @@
 class WeeklyPaymentsController < ApplicationController
   def index
     @weekly_payments = policy_scope(WeeklyPayment)
+    @loanee  = Loanee.find(params[:loanee_id])
   end
 
   def new

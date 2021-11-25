@@ -1,6 +1,7 @@
 class Loanee < ApplicationRecord
   belongs_to :user
   belongs_to :loan
+  has_many :weekly_payments
 
   validates :total, presence: true
   validates :status, presence: true
