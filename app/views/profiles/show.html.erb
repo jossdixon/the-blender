@@ -12,6 +12,9 @@
   {:gravity=>"face", :height=>200, :width=>200, :crop=>"fill"},
   {:radius=>"max"}
   ]) %>
+    <% @profile.user.active_debt.loan.loanees.each do |person| %>
+      <p><%= link_to person.user.full_name, profile_path(person.user.profile) unless person.user == @profile.user %></p>
+    <% end %>
     <h1><%= @profile.user.full_name %></h1>
     <h2><%= @profile.village %></h2>
     <h3><%= @profile.business_type %></h3>
