@@ -18,6 +18,6 @@
     <p>Phone Number: <%= @profile.phone_number %></p>
     <p>Date of Birth: <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
     <p>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></p>
-    <%= render 'button_logic', profile:@profile %>
+    <%= render 'button_logic_show', profile:@profile %>
   </div>
 </div>

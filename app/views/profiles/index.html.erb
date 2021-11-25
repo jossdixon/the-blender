@@ -9,11 +9,7 @@
             <h2 class="card-name"><%= profile.user.full_name %></h2>
             <h3 class="card-village"><%= profile.village %></h3>
             <div class="card-identity-button">
-              <% if profile.user.active_debt %>
-                <%= link_to "View Group", loan_loanees_path(profile.user.active_debt), class:'card-view-group-link' %>
-              <% else %>
-                <%= link_to "No Active Loans", "#", class:'card-view-group-link' %>
-              <% end %>
+              <%= render 'index_logic', profile: profile%>
             </div>
           </div>
         </div>
