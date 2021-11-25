@@ -4,20 +4,25 @@
   </div>
   <div class="card-profile">
     <div class="img-back">
-    <%= link_to profiles_path do %>
-    <i class="fas fa-long-arrow-alt-left"></i>
-    <% end %>
+      <%= link_to profiles_path do %>
+        <i class="fas fa-long-arrow-alt-left"></i>
+      <% end %>
     </div>
-    <%= cl_image_tag(@profile.photo.key, :transformation=>[
-  {:gravity=>"face", :height=>200, :width=>200, :crop=>"fill"},
-  {:radius=>"max"}
-  ]) %>
-    <% @profile.user.active_debt.loan.loanees.each do |person| %>
-      <p><%= link_to person.user.full_name, profile_path(person.user.profile) unless person.user == @profile.user %></p>
-    <% end %>
-    <h1><%= @profile.user.full_name %></h1>
-    <h2><%= @profile.village %></h2>
-    <h3><%= @profile.business_type %></h3>
+    <div class="row display-flex">
+      <div class="col-sm text-center">
+        <%= cl_image_tag(@profile.photo.key, :transformation=>[{:gravity=>"face", :height=>240, :width=>240, :crop=>"fill"}, {:radius=>"max"}]) %>
+      </div>
+      <div class="col-sm">
+        <h1><%= @profile.user.full_name %></h1>
+        <h2><strong>Location: </strong><%= @profile.village %></h2>
+        <h2><strong>Business: </strong><%= @profile.business_type %></h3>
+        <% @profile.user.active_debt.loan.loanees.each do |person| %>
+          <div class="card-member">
+            <p><%= link_to person.user.full_name, profile_path(person.user.profile) unless person.user == @profile.user %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
     <p>Phone Number: <%= @profile.phone_number %></p>
     <p>Date of Birth: <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
     <p>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></p>
