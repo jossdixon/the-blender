@@ -1,0 +1,12 @@
+<div class="card-group-container">
+  <p>Loan Group</p>
+  <% @profile.user.active_debt.loan.loanees.each do |person| if person.user != @profile.user %>
+  <div class="card-member">
+    <%= cl_image_tag(person.user.profile.photo.key, gravity: "face", height: 240, width: 240, crop: 'fill') %>
+    <div class="card-member-infos">
+      <p><%= link_to person.user.full_name, profile_path(person.user.profile)  %></p>
+    </div>
+  </div>
+<% end %>
+<% end %>
+</div>

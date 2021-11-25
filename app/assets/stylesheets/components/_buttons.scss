@@ -39,3 +39,18 @@
   background-color: $aqua-blue;
   box-shadow: none;
 }
+
+.btn-large {
+  background-color: $blue;
+  color: #ffff;
+  border-radius: 24px;
+  padding: 24px;
+  font-size: 24px;
+  margin: 16px;
+  &:hover {
+    background-color: $light-gray;
+  }
+  &:active {
+    background-color: $light-gray;
+  }
+}

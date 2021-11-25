@@ -1,23 +1,31 @@
-<div class="container">
+<div class="container mb-5">
   <div class="container p-2">
     <%= render 'search' %>
   </div>
   <div class="card-profile">
     <div class="img-back">
-    <%= link_to profiles_path do %>
-    <i class="fas fa-long-arrow-alt-left"></i>
-    <% end %>
+      <%= link_to profiles_path do %>
+        <i class="fas fa-long-arrow-alt-left"></i>
+      <% end %>
     </div>
-    <%= cl_image_tag(@profile.photo.key, :transformation=>[
-  {:gravity=>"face", :height=>200, :width=>200, :crop=>"fill"},
-  {:radius=>"max"}
-  ]) %>
-    <h1><%= @profile.user.full_name %></h1>
-    <h2><%= @profile.village %></h2>
-    <h3><%= @profile.business_type %></h3>
-    <p>Phone Number: <%= @profile.phone_number %></p>
-    <p>Date of Birth: <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
-    <p>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></p>
-    <%= render 'button_logic_show', profile:@profile %>
+    <div class="row display-flex">
+      <div class="col-sm text-center">
+        <%= cl_image_tag(@profile.photo.key, :transformation=>[{:gravity=>"face", :height=>240, :width=>240, :crop=>"fill"}, {:radius=>"max"}]) %>
+        <div class="container mt-4">
+          <p><strong>Phone Number:</strong> <%= @profile.phone_number %></p>
+          <p><strong>Date of Birth:</strong> <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
+          <p>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></p>
+        </div>
+        <%= render 'button_logic_show', profile:@profile %>
+      </div>
+      <div class="col-sm">
+        <h1><%= @profile.user.full_name %></h1>
+        <h2><strong>Location: </strong><%= @profile.village %></h2>
+        <h2><strong>Business: </strong><%= @profile.business_type %></h3>
+        <% unless @profile.user.active_debt.nil? %>
+          <%= render 'group' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
