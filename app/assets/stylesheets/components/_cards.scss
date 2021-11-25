@@ -94,9 +94,11 @@
   }
   h1 {
     font-size: 32px;
+    padding: 8px;
   }
   h2 {
     font-size: 24px;
+    padding: 8px;
   }
   h3 {
     font-size: 16px;
@@ -109,13 +111,14 @@
 }
 
 .card-member {
+  margin-top: 16px;
   overflow: hidden;
-  height: 120px;
+  height: 25%;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  border-radius: 50px;
+  border-radius: 60px;
 }
 
 .card-member img {
@@ -140,6 +143,26 @@
 
 .card-member .card-member-infos {
   padding: 16px;
+  text-decoration: none;
+  a{
+    text-decoration: none;
+    font-size: 20px;
+  &:hover{
+      text-decoration: none;
+    }
+  }
+}
+
+.card-group-container {
+  color: $light-gray;
+  text-align: center;
+  background-color: $blue;
+  padding: 16px;
+  margin: 24px 24px;
+  border-radius: 16px;
+  p {
+    font-size: 24px;
+  }
 }
 
 // Smallest device
