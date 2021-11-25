@@ -1,0 +1,13 @@
+<% unless @profile.user.active_debt.nil? %>
+  <% total = @profile.user.active_debt.total %>
+  <% paid_sum = 0 %>
+  <% @profile.user.active_debt.weekly_payments.each {|payment| paid_sum = paid_sum + payment.amount} %>
+  <% if @profile.user.active_debt &&  total - paid_sum > 0 %>
+    <%= link_to "Receive Payment", new_loanee_weekly_payment_path(@profile.user.active_debt), class: "btn btn-create"  %>
+    <%= link_to "Repayment History", loanee_weekly_payments_path(Loanee.find(@profile.user.active_debt.id)), class: "btn btn-create" %>
+  <% else %>
+    <p class="mark"> This user has no active debts. </p>
+  <% end %>
+<% else %>
+  <p class="mark"> This user has no active debts. </p>
+<% end %>
