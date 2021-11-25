@@ -3,9 +3,9 @@
   <h2>"<%= @loanee.user.full_name %>"</h2>
   <br>
   <% @loanee.weekly_payments.reverse_each do |weekly_payment|%>
-  <p><%= weekly_payment.loanee.user.full_name %></p>
-  <p><%= weekly_payment.created_at %></p>
-  <p>$ <%= weekly_payment.amount %></p>
+    <p><%= weekly_payment.loanee.user.full_name %></p>
+    <p><%= weekly_payment.created_at %></p>
+    <p>$ <%= weekly_payment.amount %></p>
   <% end %>
   <%= link_to profile_path(@weekly_payments.first.loanee.user.profile) do%>
     <p><i class="fas fa-undo"></i></p>
