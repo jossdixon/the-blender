@@ -1,4 +1,7 @@
 <div class="container">
+  <h1>Receive payment</h1>
+  <br>
+  <h2>Weekly payment for <%= @loanee.user.full_name%> is <strong style="color:red;">$<%= (@loanee.total / @loanee.loan.weeks).round(2) %></strong></h2>
   <%= render 'form', loanee:@loanee%>
   <%= link_to profile_path(@loanee.user.profile) do%>
     <p><i class="fas fa-undo"></i></p>
