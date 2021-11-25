@@ -1,10 +1,37 @@
 <div class="container">
-  <h1>Loan Number: <%= @loan.id%></h1>
-  <br>
-  <p>Loan Started On: <%= @loan.start_date.strftime("%A %b %d") %></p>
-  <p>Loan Duration: <%= @loan.weeks %> weeks</p>
-  <% @loan.loanees.each_with_index do |loanee, index| %>
-    <p> Loanee <%= index +1 %> is <%= link_to loanee.user.full_name, profile_path(loanee.user.profile) %>, borrowing $<%= loanee.total %></p>
-    <p>Weekly Payment Amount: $<%= (loanee.total / @loan.weeks).round(2) %></p>
-  <% end %>
+  <div class="container mt-5">
+    <div class="card-group">
+        <div class="img-back">
+          <%= link_to profiles_path do %>
+          <i class="fas fa-long-arrow-alt-left"></i>
+          <% end %>
+        </div>
+     <div>
+          <h2>Loan #: <%= @loan.id%></h2>
+          <br>
+          <p><strong>Started On:</strong> <%= @loan.start_date.strftime("%A %b %d") %></p>
+          <p><strong>Duration: </strong><%= @loan.weeks %> weeks</p>
+
+          <h3>Borrowers</h3>
+          <table>
+            <tr>
+              <th >Photo</th>
+              <th class="cell-center">Name</th>
+              <th class="cell-center">Total Debt Amount</th>
+              <th class="cell-center">Weekly Payment</th>
+            </tr>
+            <% @loan.loanees.each_with_index do |loanee| %>
+
+            <tr>
+              <td><%= cl_image_tag(loanee.user.profile.photo.key, :transformation=>[
+                {:gravity=>"face", :height=>150, :width=>150, :crop=>"fill"}, {:radius=>"max"}]) %></td>
+              <td class="cell-center"><%= link_to loanee.user.full_name, profile_path(loanee.user.profile) %></td>
+              <td class="cell-center"><%= loanee.total %></td>
+              <td class="cell-center"><%= (loanee.total / @loan.weeks).round(2) %></td>
+            </tr>
+            <% end %>
+          </table>
+      </div>
+    </div>
+  </div>
 </div>
