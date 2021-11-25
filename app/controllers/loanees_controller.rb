@@ -1,6 +1,8 @@
 class LoaneesController < ApplicationController
-  def new
+  def index
+  end
 
+  def new
   end
 
   def create
