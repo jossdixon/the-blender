@@ -4,16 +4,18 @@
   </div>
   <div class="card-profile">
     <div class="img-back">
-    <%= link_to profiles_path do %>
-    <i class="fas fa-long-arrow-alt-left"></i>
-    <% end %>
+      <%= link_to profiles_path do %>
+        <i class="fas fa-long-arrow-alt-left"></i>
+      <% end %>
     </div>
     <%= cl_image_tag(@profile.photo.key, :transformation=>[
   {:gravity=>"face", :height=>200, :width=>200, :crop=>"fill"},
   {:radius=>"max"}
   ]) %>
-    <% @profile.user.active_debt.loan.loanees.each do |person| %>
-      <p><%= link_to person.user.full_name, profile_path(person.user.profile) unless person.user == @profile.user %></p>
+    <% unless @profile.user.active_debt.nil? %>
+      <% @profile.user.active_debt.loan.loanees.each do |person| %>
+        <p><%= link_to person.user.full_name, profile_path(person.user.profile) unless person.user == @profile.user %></p>
+      <% end %>
     <% end %>
     <h1><%= @profile.user.full_name %></h1>
     <h2><%= @profile.village %></h2>
