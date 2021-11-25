@@ -14,14 +14,14 @@
     <% i = 1 %>
     <% remainder = @loanee.total%>
     <% @loanee.weekly_payments.each do |weekly_payment|%>
-      <% if remainder < 0 %>
+      <% if remainder - weekly_payment.amount < 0 %>
         <tr class="overpay">
-          <th scope="row"><%= i %></th>
+          <th scope="row">Over Paid</th>
           <td ><%= weekly_payment.amount.round(2) %></td>
           <td><%= (weekly_payment.loanee.total / weekly_payment.loanee.loan.weeks).round(2) %></td>
           <td><%= remainder - weekly_payment.amount.round(2) %></td>
           <td><%= weekly_payment.loanee.total.round(2) %></td>
-          <td><%= weekly_payment.created_at %></td>
+          <td><%= weekly_payment.created_at.strftime("%A %B %d %Y") %></td>
         </tr>
         <% i += 1 %>
         <% remainder -= weekly_payment.amount %>
