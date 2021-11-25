@@ -3,8 +3,8 @@
   <br>
   <br>
     <%= simple_form_for @loan do |f| %>
-      <%= f.input :start_date %>
-      <%= f.input :weeks %>
+      <%= f.input :start_date, :as => :date, :start_year => Date.today.year %>
+      <%= f.input :weeks, input_html: { min: '1', step: 'any' } %>
       <hr>
       <%= f.simple_fields_for :loanees do |loanee_form| %>
         <%= loanee_form.association :user, label: 'Loanee 1' %>
