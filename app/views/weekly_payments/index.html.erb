@@ -2,12 +2,33 @@
   <h1>Weekly Payment for</h1>
   <h2>"<%= @loanee.user.full_name %>"</h2>
   <br>
-  <% @loanee.weekly_payments.reverse_each do |weekly_payment|%>
-  <p><%= weekly_payment.loanee.user.full_name %></p>
-  <p><%= weekly_payment.created_at %></p>
-  <p>$ <%= weekly_payment.amount %></p>
-  <% end %>
-  <%= link_to profile_path(@loanee.user.profile) do%>
-    <p><i class="fas fa-undo"></i></p>
-  <% end %>
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Payment Received ($)</th>
+      <th scope="col">Weekly Payment Amount</th>
+      <th scope="col">Remaining Amount</th>
+      <th scope="col">Total Debt Amount</th>
+      <th scope="col">Payment Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% i = 1 %>
+    <% remainder = @loanee.total%>
+    <% @loanee.weekly_payments.each do |weekly_payment|%>
+      <tr>
+        <th scope="row"><%= i %></th>
+        <td><%= weekly_payment.amount.round(2) %></td>
+        <td><%= (weekly_payment.loanee.total / weekly_payment.loanee.loan.weeks).round(2) %></td>
+        <td><%= remainder - weekly_payment.amount.round(2) %></td>
+        <td><%= weekly_payment.loanee.total.round(2) %></td>
+        <td><%= weekly_payment.created_at %></td>
+      </tr>
+      <% i += 1 %>
+      <% remainder -= weekly_payment.amount %>
+    <% end %>
+  </tbody>
+</table>
+
 </div>

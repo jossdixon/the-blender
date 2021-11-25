@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Loan Number: <%= @loan.id%></h1>
-    <br>
+  <br>
   <p>Loan Started On: <%= @loan.start_date.strftime("%A %b %d") %></p>
   <p>Loan Duration: <%= @loan.weeks %> weeks</p>
   <% @loan.loanees.each_with_index do |loanee, index| %>
