@@ -1,18 +1,19 @@
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Payment Received ($)</th>
-        <th scope="col">Weekly Payment Amount</th>
-        <th scope="col">Remaining Amount</th>
-        <th scope="col">Total Debt Amount</th>
-        <th scope="col">Payment Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% i = 1 %>
-      <% remainder = @loanee.total%>
-      <% @loanee.weekly_payments.each do |weekly_payment|%>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Payment Received ($)</th>
+      <th scope="col">Weekly Payment Amount</th>
+      <th scope="col">Remaining Amount</th>
+      <th scope="col">Total Debt Amount</th>
+      <th scope="col">Payment Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% i = 1 %>
+    <% remainder = @loanee.total%>
+    <% @loanee.weekly_payments.each do |weekly_payment|%>
       <% if remainder < 0 %>
         <tr class="overpay">
           <th scope="row"><%= i %></th>
@@ -25,17 +26,17 @@
         <% i += 1 %>
         <% remainder -= weekly_payment.amount %>
       <% else %>
-                <tr>
+        <tr>
           <th scope="row"><%= i %></th>
           <td><%= weekly_payment.amount.round(2) %></td>
           <td><%= (weekly_payment.loanee.total / weekly_payment.loanee.loan.weeks).round(2) %></td>
           <td><%= remainder - weekly_payment.amount.round(2) %></td>
           <td><%= weekly_payment.loanee.total.round(2) %></td>
-          <td><%= weekly_payment.created_at %></td>
+          <td><%= weekly_payment.created_at.strftime("%A %B %d %Y") %></td>
         </tr>
         <% i += 1 %>
         <% remainder -= weekly_payment.amount %>
       <% end %>
-      <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </tbody>
+</table>

@@ -4,7 +4,7 @@
   <p>Loan Started On: <%= @loan.start_date.strftime("%A %b %d") %></p>
   <p>Loan Duration: <%= @loan.weeks %> weeks</p>
   <% @loan.loanees.each_with_index do |loanee, index| %>
-    <p> Loanee <%= index +1 %> is <%= link_to loanee.user.full_name, profile_path(loanee.user.profile) %>, borrowing $<%= loanee.total %></p>
+    <p>Loanee <%= index +1 %> is <%= link_to loanee.user.full_name, profile_path(loanee.user.profile) %>, borrowing $<%= loanee.total %></p>
     <p>Weekly Payment Amount: $<%= (loanee.total / @loan.weeks).round(2) %></p>
   <% end %>
 </div>

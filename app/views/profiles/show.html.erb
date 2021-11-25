@@ -4,9 +4,9 @@
   </div>
   <div class="card-profile">
     <div class="img-back">
-      <%= link_to profiles_path do %>
-        <i class="fas fa-arrow-circle-left"></i>
-      <% end %>
+    <%= link_to profiles_path do %>
+    <i class="fas fa-long-arrow-alt-left"></i>
+    <% end %>
     </div>
     <%= cl_image_tag(@profile.photo.key, :transformation=>[
   {:gravity=>"face", :height=>200, :width=>200, :crop=>"fill"},
