@@ -25,7 +25,7 @@
 
             <tr>
               <td><%= cl_image_tag(loanee.user.profile.photo.key, :transformation=>[
-                {:gravity=>"face", :height=>150, :width=>150, :crop=>"fill"}, {:radius=>"max"}]) %></td>
+                {:gravity=>"face", :height=>120, :width=>120, :crop=>"fill"}, {:radius=>"max"}]) %></td>
               <td class="cell-center"><%= link_to loanee.user.full_name, profile_path(loanee.user.profile) %></td>
               <td class="cell-center"><%= loanee.total %></td>
               <td class="cell-center"><%= (loanee.total / @loan.weeks).round(2) %></td>
