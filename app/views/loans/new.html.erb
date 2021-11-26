@@ -2,26 +2,15 @@
   <h1>Create a loan</h1>
   <br>
   <br>
-    <%= simple_form_for @loan do |f| %>
-      <%= f.input :start_date, :as => :date, :start_year => Date.today.year %>
-      <%= f.input :weeks, input_html: { min: '1', step: 'any' } %>
+  <%= simple_form_for @loan do |f| %>
+    <%= f.input :start_date, :as => :date, :start_year => Date.today.year %>
+    <%= f.input :weeks, input_html: { min: '1', step: 'any' } %>
+    <%= f.simple_fields_for :loanees do |loanee_form| %>
       <hr>
-      <%= f.simple_fields_for :loanees do |loanee_form| %>
-        <%= loanee_form.association :user, label: 'Loanee 1', collection: User.order('first_name ASC') %>
-        <%= loanee_form.input :total, label: 'Amount'  %>
-      <% end %>
-      <hr>
-      <%= f.simple_fields_for :loanees do |loanee_form| %>
-        <%= loanee_form.association :user, label: 'Loanee 2', collection: User.order('first_name ASC')  %>
-        <%= loanee_form.input :total, label: 'Amount'  %>
-      <% end %>
-      <hr>
-      <%= f.simple_fields_for :loanees do |loanee_form| %>
-        <%= loanee_form.association :user, label: 'Loanee 3', collection: User.order('first_name ASC')  %>
-        <%= loanee_form.input :total, label: 'Amount'  %>
-      <% end %>
-      <hr>
-      <br>
-      <%= f.submit class:"btn btn-primary"%>
+      <%= loanee_form.association :user, label: "Loanee #{} ", collection: User.order('first_name ASC') %>
+      <%= loanee_form.input :total, label: 'Amount'  %>
     <% end %>
+    <br>
+    <%= f.submit class:"btn btn-primary"%>
+  <% end %>
 </div>
