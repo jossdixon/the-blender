@@ -7,17 +7,17 @@
       <%= f.input :weeks, input_html: { min: '1', step: 'any' } %>
       <hr>
       <%= f.simple_fields_for :loanees do |loanee_form| %>
-        <%= loanee_form.association :user, label: 'Loanee 1' %>
+        <%= loanee_form.association :user, label: 'Loanee 1', collection: User.order('first_name ASC') %>
         <%= loanee_form.input :total, label: 'Amount'  %>
       <% end %>
       <hr>
       <%= f.simple_fields_for :loanees do |loanee_form| %>
-        <%= loanee_form.association :user, label: 'Loanee 2'  %>
+        <%= loanee_form.association :user, label: 'Loanee 2', collection: User.order('first_name ASC')  %>
         <%= loanee_form.input :total, label: 'Amount'  %>
       <% end %>
       <hr>
       <%= f.simple_fields_for :loanees do |loanee_form| %>
-        <%= loanee_form.association :user, label: 'Loanee 3'  %>
+        <%= loanee_form.association :user, label: 'Loanee 3', collection: User.order('first_name ASC')  %>
         <%= loanee_form.input :total, label: 'Amount'  %>
       <% end %>
       <hr>
