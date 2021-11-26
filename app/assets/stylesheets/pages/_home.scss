@@ -1,12 +1,17 @@
 // Specific CSS for your home-page
 body {
 color: $blue;
+// background-image: url(colors.jpg);
+
 }
 
 h1 {
   font-size: 64px;
+  
 }
-
+p {
+  color: white;
+}
 .content {
   width: 100%;
   height: 50vh;
@@ -14,4 +19,5 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
