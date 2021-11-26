@@ -1,7 +1,11 @@
-const fab = document.querySelector('.fab');
+function action_button () {
+  console.log(456456)
 
-fab.addEventListener('click', () => {
-  fab.classList.toggle('active');
-})
+  const fab = document.querySelector('.fab');
 
+  fab.addEventListener('click', () => {
+    fab.classList.toggle('active');
+  })
+}
 
+export {action_button}
