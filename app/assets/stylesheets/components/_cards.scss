@@ -125,13 +125,16 @@
       padding-top: 8%;
     }
 
-    .cell-center {
-      flex-direction: row;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-      padding: 16px;
+    th {
+      padding: 20px;
+      word-wrap: normal;
+      width: 430px;
+      text-align : center;
 
+    }
+
+    td {
+      padding: 16px;
     }
 }
 

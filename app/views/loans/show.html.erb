@@ -17,18 +17,18 @@
           <table>
             <tr>
               <th >Photo</th>
-              <th class="cell-center">Name</th>
-              <th class="cell-center">Total Debt Amount</th>
-              <th class="cell-center">Weekly Payment</th>
+              <th>Name</th>
+              <th>Total Debt Amount</th>
+              <th>Weekly Payment</th>
             </tr>
             <% @loan.loanees.each_with_index do |loanee| %>
 
             <tr>
               <td><%= cl_image_tag(loanee.user.profile.photo.key, :transformation=>[
                 {:gravity=>"face", :height=>120, :width=>120, :crop=>"fill"}, {:radius=>"max"}]) %></td>
-              <td class="cell-center"><%= link_to loanee.user.full_name, profile_path(loanee.user.profile) %></td>
-              <td class="cell-center"><%= loanee.total %></td>
-              <td class="cell-center"><%= (loanee.total / @loan.weeks).round(2) %></td>
+              <td><%= link_to loanee.user.full_name, profile_path(loanee.user.profile) %></td>
+              <td><%= loanee.total %></td>
+              <td><%= (loanee.total / @loan.weeks).round(2) %></td>
             </tr>
             <% end %>
           </table>
