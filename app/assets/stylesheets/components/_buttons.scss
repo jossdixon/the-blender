@@ -54,6 +54,7 @@
     background-color: $light-gray;
   }
 }
+
 .fab {
   height: 48px;
   width: 48px;
@@ -105,4 +106,21 @@
 
 .fab.active .fas.fa-dollar-sign {
   display: inline;
+
+.btn-search {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $blue;
+  transition: background 0.3s ease;
+}
+
+.btn-search:hover {
+  background: $light-gray;
+  color: $blue;
+}
+
+.btn-search:active {
+  background: $light-gray;
+  color: $blue;
 }

@@ -7,10 +7,11 @@
     <%= f.input :last_name %>
     <%= f.simple_fields_for :profile do |profile_form| %>
       <%= profile_form.input :village %>
-      <%= profile_form.input :birthday%>
+      <%= profile_form.input :birthday, start_year: Date.today.year - 110, end_year: Date.today.year%>
       <%= profile_form.input :phone_number %>
-      <%= profile_form.input :join_date %>
+      <%= profile_form.input :join_date, start_year: Date.today.year - 11, end_year: Date.today.year %>
       <%= profile_form.input :business_type %>
+      <%= profile_form.input :photo, as: :file %>
     <% end %>
     <%= f.submit class: "btn btn-primary" %>
   <% end %>

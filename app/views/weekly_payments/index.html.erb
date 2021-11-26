@@ -2,20 +2,22 @@
   <h1>Weekly Payment for</h1>
   <h2>"<%= @loanee.user.full_name %>"</h2>
   <br>
-  <p>Loan ID: <%= @loanee.loan.id %></p>
-  <p>Loan Start Date: <%= @loanee.loan.start_date %></p>
+  <p>Loan ID: <strong><i><%= @loanee.loan.id %></i></strong></p>
+  <p>Loan Start Date: <strong><i><%= @loanee.loan.start_date %></i></strong></p>
+  <p>Loan Total for <%= @loanee.user.first_name %>: $<strong><i><%= @loanee.total %></i></strong></p>
   <% if @loanee.weekly_payments.any?%>
+  <div style="text-align: center;">
     <div class="progress">
-      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= @progress %>%</div>
     </div>
     <%= render 'table', loanee:@loanee %>
     <%= link_to profile_path(@loanee.user.profile) do%>
-      <p><i class="fas fa-undo"></i></p>
+      <p><i class="fas fa-long-arrow-alt-left"></i></p>
     <% end %>
   <% else %>
     <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
     <%= link_to profile_path(@loanee.user.profile) do%>
-      <p><i class="fas fa-undo"></i></p>
+      <p><i class="fas fa-long-arrow-alt-left"></i></p>
     <% end %>
   <% end %>
 </div>
