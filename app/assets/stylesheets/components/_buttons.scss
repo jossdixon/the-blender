@@ -63,7 +63,7 @@
   display: flex;
 
   padding: 16px;
-  gap: 24px;
+  gap: 40px;
   border-radius: 24px;
 
   overflow: hidden;
@@ -71,7 +71,7 @@
 }
 
 .fab.active {
-  width: 184px;
+  width: 256px;
 }
 
 .fas.fa-plus {
@@ -124,4 +124,5 @@
 .btn-search:active {
   background: $light-gray;
   color: $blue;
+}
 }
