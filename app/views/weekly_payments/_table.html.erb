@@ -1,12 +1,11 @@
 
-<table class="table">
+<table class="table" style="width:640px;text-align: center;">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Payment Received ($)</th>
       <th scope="col">Weekly Payment Amount</th>
       <th scope="col">Remaining Amount</th>
-      <th scope="col">Total Debt Amount</th>
       <th scope="col">Payment Date</th>
       <th scope="col">Payment Expected Date</th>
     </tr>
@@ -21,7 +20,6 @@
           <td ><%= weekly_payment.amount.round(2) %></td>
           <td><%= (weekly_payment.loanee.total / weekly_payment.loanee.loan.weeks).round(2) %></td>
           <td><%= remainder - weekly_payment.amount.round(2) %></td>
-          <td><%= weekly_payment.loanee.total.round(2) %></td>
           <td><%= weekly_payment.created_at.strftime("%A %B %d %Y") %></td>
           <td><%= ((@loanee.loan.start_date) + (i * 7)).strftime("%A %B %d %Y") %></td>
         </tr>
@@ -33,7 +31,6 @@
           <td><%= weekly_payment.amount.round(2) %></td>
           <td><%= (weekly_payment.loanee.total / weekly_payment.loanee.loan.weeks).round(2) %></td>
           <td><%= remainder - weekly_payment.amount.round(2) %></td>
-          <td><%= weekly_payment.loanee.total.round(2) %></td>
           <td><%= weekly_payment.created_at.strftime("%A %B %d %Y") %></td>
           <td><%= ((@loanee.loan.start_date) + (i * 7)).strftime("%A %B %d %Y") %></td>
         </tr>
