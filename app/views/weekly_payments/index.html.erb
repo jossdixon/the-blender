@@ -5,12 +5,16 @@
   <p>Loan ID: <strong><i><%= @loanee.loan.id %></i></strong></p>
   <p>Loan Start Date: <strong><i><%= @loanee.loan.start_date %></i></strong></p>
   <p>Loan Total for <%= @loanee.user.first_name %>: $<strong><i><%= @loanee.total %></i></strong></p>
+  <br>
   <% if @loanee.weekly_payments.any?%>
   <div style="text-align: center;">
     <div class="progress">
-      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= @progress %>%</div>
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= @progress %>% Complete</div>
     </div>
+      <br>
     <%= render 'table', loanee:@loanee %>
+      <br>
+        <br>
     <%= link_to profile_path(@loanee.user.profile) do%>
       <p><i class="fas fa-long-arrow-alt-left"></i></p>
     <% end %>
