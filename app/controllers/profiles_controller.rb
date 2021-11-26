@@ -21,7 +21,11 @@ before_action :set_profile, only: [:show]
   def create
     @profile = Profile.new(profile_params)
     authorize @profile
-    @profile.save
+    if @profile.save
+      redirect_to profiles_show_path(@profile)
+    else
+      render :new
+    end
   end
 
   private
