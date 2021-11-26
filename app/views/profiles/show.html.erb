@@ -19,7 +19,10 @@
         <%= render 'button_logic_show', profile:@profile %>
       </div>
       <div class="col-sm">
-        <h1><%= @profile.user.full_name %><%= render 'status' %></h1>
+        <h1><%= @profile.user.full_name %>
+          <% unless @profile.user.active_debt.nil? %>
+            <%= render 'status' %></h1>
+        <% end %>
         <h2><strong>Location: </strong><%= @profile.village %></h2>
         <h2><strong>Business: </strong><%= @profile.business_type %></h3>
         <% unless @profile.user.active_debt.nil? %>
