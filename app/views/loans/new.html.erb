@@ -5,10 +5,12 @@
   <%= simple_form_for @loan do |f| %>
     <%= f.input :start_date, :as => :date, :start_year => Date.today.year %>
     <%= f.input :weeks, input_html: { min: '1', step: 'any' } %>
+    <% i = 1%>
     <%= f.simple_fields_for :loanees do |loanee_form| %>
       <hr>
-      <%= loanee_form.association :user, label: "Loanee #{} ", collection: User.order('first_name ASC') %>
+      <%= loanee_form.association :user, label: "Loanee #{i} ", collection: User.order('first_name ASC') %>
       <%= loanee_form.input :total, label: 'Amount'  %>
+      <% i += 1%>
     <% end %>
     <br>
     <%= f.submit class:"btn btn-primary"%>
