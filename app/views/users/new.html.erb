@@ -9,7 +9,7 @@
       <%= profile_form.input :village %>
       <%= profile_form.input :birthday, start_year: Date.today.year - 110, end_year: Date.today.year%>
       <%= profile_form.input :phone_number %>
-      <%= profile_form.input :join_date %>
+      <%= profile_form.input :join_date, start_year: Date.today.year - 11, end_year: Date.today.year %>
       <%= profile_form.input :business_type %>
     <% end %>
     <%= f.submit class: "btn btn-primary" %>
