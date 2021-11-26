@@ -9,7 +9,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
       <!-- -->
-        <div class="fab active">
+        <div class="fab">
           <i class="fas fa-plus"></i>
           <%= link_to destroy_user_session_path, method: :delete do %>
           <i class="fas fa-long-arrow-alt-left"></i>
