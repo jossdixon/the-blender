@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to profiles_path
     else
-      raise
       render :new
     end
   end
@@ -21,6 +20,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name, profile_attributes: [:village, :phone_number, :birthday, :join_date, :business_type, :birthday])
+    params.require(:user).permit(:email, :password, :first_name, :last_name, profile_attributes: [:village, :phone_number, :birthday, :join_date, :business_type, :birthday, :photo])
   end
 end

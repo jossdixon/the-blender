@@ -8,6 +8,7 @@ class Profile < ApplicationRecord
   validates :birthday, presence: true
   validates :join_date, presence: true
   validates :business_type, presence: true
+  validates :photo, presence: true
 
   include PgSearch::Model
   pg_search_scope :global_search,
