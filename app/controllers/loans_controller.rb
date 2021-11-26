@@ -9,7 +9,9 @@ before_action :set_loan, only: [ :show ]
 
   def new
     @loan = Loan.new
-    @loan.loanees.build
+    3.times do
+      @loan.loanees.build
+    end
     authorize @loan
   end
 
