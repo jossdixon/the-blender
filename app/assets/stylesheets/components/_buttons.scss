@@ -54,3 +54,21 @@
     background-color: $light-gray;
   }
 }
+
+.btn-search {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $blue;
+  transition: background 0.3s ease;
+}
+
+.btn-search:hover {
+  background: $light-gray;
+  color: $blue;
+}
+
+.btn-search:active {
+  background: $light-gray;
+  color: $blue;
+}

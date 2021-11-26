@@ -1,7 +1,12 @@
 <div class="container mb-5">
-  <div class="container p-2">
-    <%= render 'search' %>
-  </div>
+  <%= simple_form_for :query, url: profiles_path, method: :get do |f| %>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="query" id="search_query" />
+      <button name="button" type="submit" class="btn btn-search">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
   <div class="card-profile">
     <div class="img-back">
       <%= link_to profiles_path do %>
