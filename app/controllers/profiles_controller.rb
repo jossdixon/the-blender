@@ -11,6 +11,7 @@ before_action :set_profile, only: [:show]
 
   def show
     @user = User.new
+    @weekly_payment = WeeklyPayment.new
   end
 
   def new
