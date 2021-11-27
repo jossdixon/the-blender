@@ -1,0 +1,14 @@
+<div class="container">
+  <%= render 'search'%>
+  <% display_debts = [] %>
+  <% @users.each do |user|%>
+    <% if user.debts.any?%>
+      <% user.debts.each do |debt| %>
+        <% display_debts << debt.loan_id %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% display_debts.uniq.each do |id_num|%>
+  <p><%= link_to id_num, loan_path(id_num)%></p>
+<% end %>
+</div>

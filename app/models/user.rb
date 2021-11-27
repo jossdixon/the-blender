@@ -27,4 +27,12 @@ class User < ApplicationRecord
   def active_debt
     debts.active.first
   end
+
+
+  include PgSearch::Model
+  pg_search_scope :loan_search,
+    against: [ :first_name, :last_name, :email],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

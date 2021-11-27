@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :loanees, only: [:show] do
     resources :weekly_payments, only: [:new, :create, :index]
   end
-  resources :users, only: [:new]
+  resources :users, only: [:new, :index]
   post 'user_profile', to: "users#create", as: 'user_profile'
 end

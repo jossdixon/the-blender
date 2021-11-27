@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  def index
+    if params[:query].present?
+      @users = policy_scope(User).loan_search(params[:query])
+    else
+      @users = User.all
+      @users = policy_scope(User)
+    end
+  end
+
   def new
     @user = User.new
     @user.build_profile
