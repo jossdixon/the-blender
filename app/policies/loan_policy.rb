@@ -1,12 +1,11 @@
 class LoanPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.profile.nil?
-        scope.all
-      else
-        scope.where(user.id == loan.user_id)
-      end
+      scope.all if user_is_loan_officer?
     end
+      def user_is_loan_officer?
+    user.profile.nil?
+  end
   end
 
   def show?
