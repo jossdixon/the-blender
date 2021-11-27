@@ -13,7 +13,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for  [@loanee, @weekly_payment] do |f| %>
+        <%= simple_form_for  [@profile.user.active_debt, @weekly_payment] do |f| %>
         <%= f.input :amount %>
         <%= f.submit class: 'btn btn-outline-dark' %>
         <% end %>
