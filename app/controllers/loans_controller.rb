@@ -13,7 +13,7 @@ before_action :set_loan, only: [ :show ]
       end
       @loan_total = @loan_total + loanee.total
     end
-    
+
   @percentage = (@progress/@loan_total)
   end
 

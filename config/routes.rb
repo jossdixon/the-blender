@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :profiles, only: [:index, :show, :new]
-  resources :loans, only: [:new, :create, :show] do
+  resources :loans, only: [:new, :create, :show, :index] do
     resources :loanees, only: [:new, :create]
   end
   resources :loanees, only: [:show] do
