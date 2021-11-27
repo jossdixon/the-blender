@@ -1,23 +1,27 @@
-
-  <div class="container mt-5">
-    <div class="card-group">
-      <div class="img-back">
-        <%= link_to profiles_path do %>
-          <i class="fas fa-long-arrow-alt-left"></i>
-        <% end %>
-      </div>
-      <div>
-        <h2>Loan #<%= @loan.id%></h2>
-        <br>
-        <p><strong>Started On:</strong> <%= @loan.start_date.strftime("%A %b %d") %></p>
-        <p><strong>Duration: </strong><%= @loan.weeks %> weeks</p>
-        <table>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Total Debt Amount</th>
-            <th>Weekly Payment</th>
-          </tr>
+<div class="container mt-5">
+  <div class="card-group">
+    <div class="img-back">
+      <%= link_to profiles_path do %>
+        <i class="fas fa-long-arrow-alt-left"></i>
+      <% end %>
+    </div>
+    <div>
+      <h2>Loan #<%= @loan.id%></h2>
+      <br>
+      <p><strong>Started On:</strong> <%= @loan.start_date.strftime("%A %b %d") %></p>
+      <p><strong>Duration: </strong><%= @loan.weeks %> weeks</p>
+      <table>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Total Debt Amount</th>
+          <th>Weekly Payment</th>
+        </tr>
+        <div style="text-align: center;">
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @percentage %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= @progress %>% Complete</div>
+          </div>
+          <br>
           <% @loan.loanees.each_with_index do |loanee| %>
             <tr>
               <td><%= cl_image_tag(loanee.user.profile.photo.key, :transformation=>[
@@ -31,4 +35,3 @@
       </div>
     </div>
   </div>
-
