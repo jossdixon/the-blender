@@ -23,8 +23,8 @@
           <p><%= loanee.user.full_name%></p>
           <% expected_amount_group= expected_amount_group + (loanee.total / loan.weeks) %>
           <%loanee.weekly_payments.each do |weekly_payment| %>
-            <%if weekly_payment.created_at == Date.today%>
-              <% actual_amount_total= actual_amount_total + weekly_payment.amount%>
+            <%if weekly_payment.created_at.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d')%>
+              <% actual_amount_group= actual_amount_group + weekly_payment.amount%>
             <% end %>
           <% end %>
         <% end %>
