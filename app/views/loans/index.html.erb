@@ -1,0 +1,13 @@
+<div class="container">
+  <%= render 'search'%>
+  <%if @loans.nil?%>
+<p>No loans for this person...</P>
+  <% else %>
+      <% @loans.each do |loan| %>
+    <h2>Loan# <%= link_to loan.id, loan_path(loan) %></h2>
+    <% loan.loanees.each do |loanee| %>
+      <p><%= loanee.user.full_name %></p>
+    <% end %>
+  <% end %>
+  <% end %>
+</div>
