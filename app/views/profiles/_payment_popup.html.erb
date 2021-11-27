@@ -14,8 +14,8 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for  [@profile.user.active_debt, @weekly_payment] do |f| %>
-        <%= f.input :amount %>
-        <%= f.submit class: 'btn btn-outline-dark' %>
+        <%= f.input :amount, input_html: { min: '0', step: 'any' }, label: 'Enter amount' %>
+        <%= f.submit "Receive Payment", data: {confirm: "Are you sure this information is correct?"}, class: "btn btn-outline-dark" %>
         <% end %>
       </div>
       <%# <div class="modal-footer">
