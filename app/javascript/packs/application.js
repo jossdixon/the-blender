@@ -35,3 +35,5 @@ document.addEventListener('turbolinks:load', () => {
   action_button();
   
 });
+
+import "controllers"
