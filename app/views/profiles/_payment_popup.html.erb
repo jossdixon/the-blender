@@ -15,7 +15,8 @@
       <div class="modal-body">
         <%= simple_form_for  [@profile.user.active_debt, @weekly_payment] do |f| %>
         <%= f.input :amount, label: 'Enter amount' %>
-        <%= f.submit "Click to confirm", data: {confirm: "Are you sure this information is correct?"}, class: "btn btn-outline-dark" %>
+        <p id="sweet-alert-demo" class="btn btn-primary">Confirm</p>
+        <%= f.submit "", id:"confirm-link", class:"hidden" %>
         <% end %>
       </div>
       <div class="modal-footer" style="text-align:center;">
