@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
-
+  has_many :notes, dependent: :destroy
   has_one_attached :photo
 
   validates :village, presence: true

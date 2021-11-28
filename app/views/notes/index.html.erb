@@ -1,0 +1,17 @@
+<div class="container">
+<h1>Notes about</h1>
+<%profile = Profile.find(params[:profile_id])%>
+<h2>"<%= profile.user.full_name%>"</h2>
+<br>
+  <% if profile.notes.any? %>
+    <% profile.notes.each do |note| %>
+     <p><%= note.created_at.strftime("%A %B %d %Y") %></p>
+      <p><%= note.content %></p>
+    <% end %>
+<% else %>
+  <p>There is not any notes about <%= profile.user.first_name%> yet...</p>
+  <% end %>
+      <%= link_to profile_path(profile) do%>
+      <p><i class="fas fa-long-arrow-alt-left"></i></p>
+    <% end %>
+</div>
