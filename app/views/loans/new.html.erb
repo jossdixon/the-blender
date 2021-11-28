@@ -4,12 +4,12 @@
   <br>
   <%= simple_form_for @loan do |f| %>
     <%= f.input :start_date, :as => :date, :start_year => Date.today.year %>
-    <%= f.input :weeks, input_html: { min: '1', step: 'any' } %>
+    <%= f.input :weeks, label: 'How many weeks?' %>
     <% i = 1%>
     <%= f.simple_fields_for :loanees do |loanee_form| %>
       <hr>
       <%= loanee_form.association :user, label: "Loanee #{i} ", collection: User.order('first_name ASC') %>
-      <%= loanee_form.input :total, label: 'Amount'  %>
+      <%= loanee_form.input :total, collection:[500, 1000, 1500, 2000, 2500, 3000, 3500 ,4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000], label: 'Amount'  %>
       <% i += 1%>
     <% end %>
     <br>

@@ -14,7 +14,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for  [@profile.user.active_debt, @weekly_payment] do |f| %>
-        <%= f.input :amount, collection:[500, 1000, 1500, 2000, 2500, 3000, 3500 ,4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000], label: 'Enter amount' %>
+        <%= f.input :amount, label: 'Enter amount' %>
         <%= f.submit "Click to confirm", data: {confirm: "Are you sure this information is correct?"}, class: "btn btn-outline-dark" %>
         <% end %>
       </div>
