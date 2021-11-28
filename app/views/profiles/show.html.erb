@@ -9,9 +9,14 @@
   <% end %>
   <div class="card-profile">
     <div class="img-back">
-      <%= link_to profiles_path do %>
-        <i class="fas fa-long-arrow-alt-left"></i>
-      <% end %>
+      <div class="row d-flex justify-content-between">
+        <%= link_to profiles_path do %>
+          <div><i class="fas fa-long-arrow-alt-left"></i></div>
+        <% end %>
+        <%= link_to edit_profile_path(@profile) do %>
+          <div><i class="fas fa-edit"></i></div>
+        <% end %>
+      </div>
     </div>
     <div class="row display-flex">
       <div class="col-sm text-center">
@@ -21,7 +26,6 @@
             <%= render 'status' %></h1>
         <% end %>
         <%= render 'button_logic_show', profile:@profile %>
-        
       </div>
       <div class="col-sm text-center">
         <div class="container mt-4">

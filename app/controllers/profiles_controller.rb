@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-before_action :set_profile, only: [:show]
+before_action :set_profile, only: [:show, :edit, :update]
   def index
     if params[:query].present?
       @profiles = policy_scope(Profile).global_search(params[:query])
@@ -29,10 +29,23 @@ before_action :set_profile, only: [:show]
     end
   end
 
+  def edit
+  end
+
+  def update
+    @profile.update(profile_params)
+    authorize @profile
+    if @profile.save
+      redirect_to profile_path(@profile)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def profile_params
-    params.require(:profile).permit(village, phone_number, birthday, join_date, business_type, user_id)
+    params.require(:profile).permit(:village, :phone_number, :birthday, :join_date, :business_type, :user_id)
   end
 
   def set_profile
