@@ -1,7 +1,10 @@
 <div class="container">
-<h1>Notes about</h1>
 <%profile = Profile.find(params[:profile_id])%>
+<h1>Notes about</h1>
 <h2>"<%= profile.user.full_name%>"</h2>
+<br>
+<%= link_to "Add a note", new_profile_note_path(profile), class:"btn btn-primary"%>
+<br>
 <br>
   <% if profile.notes.any? %>
     <% profile.notes.each do |note| %>

@@ -4,4 +4,7 @@
   <h2>"<%= profile.user.full_name%>"</h2>
   <br>
   <%= render 'form', profile:profile%>
+  <%= link_to profile_notes_path(profile) do %>
+    <div><i class="fas fa-long-arrow-alt-left"></i></div>
+  <% end %>
 </div>
