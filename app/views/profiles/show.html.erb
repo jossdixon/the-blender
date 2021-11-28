@@ -26,6 +26,9 @@
             <%= render 'status' %></h1>
         <% end %>
         <%= render 'button_logic_show', profile:@profile %>
+        <% unless @profile.notes.nil? %>
+          <h1><%= link_to "Notes", profile_notes_path(@profile), class:"btn btn-large"%> </h1>
+        <% end %>
       </div>
       <div class="col-sm text-center">
         <div class="container mt-4">
