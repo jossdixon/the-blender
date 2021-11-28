@@ -1,10 +1,10 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Receive Payment
+<button type="button" class="btn btn btn-large" data-toggle="modal" data-target="#exampleModal">
+  Payment
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">How much?</h5>
@@ -14,14 +14,15 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for  [@profile.user.active_debt, @weekly_payment] do |f| %>
-        <%= f.input :amount, input_html: { min: '0', step: 'any' }, label: 'Enter amount' %>
-        <%= f.submit "Receive Payment", data: {confirm: "Are you sure this information is correct?"}, class: "btn btn-outline-dark" %>
+        <%= f.input :amount, collection:[500, 1000, 1500, 2000, 2500, 3000, 3500 ,4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000], label: 'Enter amount' %>
+        <%= f.submit "Click to confirm", data: {confirm: "Are you sure this information is correct?"}, class: "btn btn-outline-dark" %>
         <% end %>
       </div>
-      <%# <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> %>
+      <div class="modal-footer" style="text-align:center;">
+        <%# <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> %>
+          <p><small>Weekly payment for <%= @profile.user.first_name%> is <strong style="color:red;">$<%= (@profile.user.active_debt.total / @profile.user.active_debt.loan.weeks).round(2) %></strong></small></p>
+      </div>
     </div>
   </div>
 </div>
