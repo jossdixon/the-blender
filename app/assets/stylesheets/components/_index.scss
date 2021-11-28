@@ -8,3 +8,8 @@
 @import "highlighter";
 @import "search";
 @import "banner";
+
+body {
+  background: rgb(90,124,153);
+background: linear-gradient(270deg, rgb(169, 177, 185) 0%, rgb(155, 185, 189) 100%);
+}
