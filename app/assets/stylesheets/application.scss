@@ -11,3 +11,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/show";
+
+body {
+  min-height: 100vh;
+  background: rgb(244,244,244);
+  background: linear-gradient(180deg, rgba(244,244,244,1) 0%, rgba(117,179,187,1) 100%);
+}
