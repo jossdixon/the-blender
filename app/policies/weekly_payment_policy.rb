@@ -9,6 +9,10 @@ class WeeklyPaymentPolicy < ApplicationPolicy
     user_is_loan_officer?
   end
 
+  def update?
+    user_is_loan_officer?
+  end
+
   private
 
   def user_is_loan_officer?
