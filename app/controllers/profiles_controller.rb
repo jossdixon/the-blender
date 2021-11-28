@@ -7,6 +7,11 @@ before_action :set_profile, only: [:show]
       @profiles = Profile.all
       @profiles = policy_scope(Profile)
     end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'list.html', locals: { profiles: @profiles } }
+    end
   end
 
   def show
