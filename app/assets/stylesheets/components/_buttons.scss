@@ -55,58 +55,6 @@
   }
 }
 
-.fab {
-  height: 48px;
-  width: 48px;
-  background-color: $light-gray;
-
-  display: flex;
-
-  padding: 16px;
-  gap: 40px;
-  border-radius: 24px;
-
-  overflow: hidden;
-  transition: width 300ms;
-}
-
-.fab.active {
-  width: 256px;
-}
-
-.fas.fa-plus {
-  transition: transform 200ms;
-  size: 3px;
-}
-
-.fab.active .fas.fa-plus {
-  transform: rotate(45deg);
-}
-
-.fas.fa-search {
-  display: none;
-  size: 3px;
-}
-.fas.fa-female {
-  display: none;
-  size: 3px;
-}
-.fas.fa-dollar-sign {
-  display: none;
-  size: 3px;
-}
-
-.fab.active .fas.fa-search {
-  display: inline;
-}
-
-.fab.active .fas.fa-female {
-  display: inline;
-}
-
-.fab.active .fas.fa-dollar-sign {
-  display: inline;
-}
 
 .btn-search {
   color: white;
