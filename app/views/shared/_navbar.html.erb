@@ -5,34 +5,37 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <nav>
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-      
       <!-- -->
-        <div class="fab">
-          <i class="fas fa-plus"></i>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fas fa-long-arrow-alt-left"></i>
-          <% end %>
+          <li>
           <%= link_to new_loan_path do %>
-          <i class="fas fa-dollar-sign"></i>
+          <i class="fas fa-dollar-sign fa-2x"></i>
           <% end %>
+          </li>
+          <li>
           <%= link_to new_user_path do %>
-          <i class="fas fa-female"></i>
+          <i class="fas fa-female fa-2x"></i>
           <% end %>
+          </li>
+          <li>
           <%= link_to profiles_path do %>
-          <i class="fas fa-search"></i>
+          <i class="fas fa-search fa-2x"></i>
           <% end %>
-        </div>
+          </li>
+          <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt fa-2x"></i>
+          <% end %>
+          </li>
+
       <!-- -->
-          </div>
-        </li>
       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>
-  </div>
+  </nav>
 </div>
