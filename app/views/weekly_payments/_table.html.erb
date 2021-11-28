@@ -1,4 +1,3 @@
-
 <table class="table" style="width:640px;text-align: center;">
   <thead>
     <tr>
@@ -8,6 +7,7 @@
       <th scope="col">Remaining Amount</th>
       <th scope="col">Payment Date</th>
       <th scope="col">Payment Expected Date</th>
+      <th scope="col">Edit Payment</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +22,10 @@
           <td><%= remainder - weekly_payment.amount.round(2) %></td>
           <td><%= weekly_payment.created_at.strftime("%A %B %d %Y") %></td>
           <td><%= ((@loanee.loan.start_date) + (i * 7)).strftime("%A %B %d %Y") %></td>
+          <td><%= link_to edit_loanee_weekly_payment_path(weekly_payment.loanee_id, weekly_payment) do%>
+              <i class="fas fa-edit"></i>
+            <% end %>
+          </td>
         </tr>
         <% i += 1 %>
         <% remainder -= weekly_payment.amount %>
@@ -33,6 +37,10 @@
           <td><%= remainder - weekly_payment.amount.round(2) %></td>
           <td><%= weekly_payment.created_at.strftime("%A %B %d %Y") %></td>
           <td><%= ((@loanee.loan.start_date) + (i * 7)).strftime("%A %B %d %Y") %></td>
+          <td><%= link_to edit_loanee_weekly_payment_path(weekly_payment.loanee_id, weekly_payment) do%>
+              <i class="fas fa-edit"></i>
+            <% end %>
+          </td>
         </tr>
         <% i += 1 %>
         <% remainder -= weekly_payment.amount %>

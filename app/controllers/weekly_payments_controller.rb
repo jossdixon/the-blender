@@ -27,6 +27,25 @@ class WeeklyPaymentsController < ApplicationController
     end
   end
 
+  def edit
+    @weekly_payment = WeeklyPayment.find(params[:id])
+    @loanee = @weekly_payment.loanee
+    authorize @weekly_payment
+  end
+
+  def update
+    @weekly_payment = WeeklyPayment.find(params[:id])
+    @loanee = Loanee.find(params[:loanee_id])
+    @weekly_payment.update(weekly_payment_params)
+    @weekly_payment.loanee = @loanee
+    authorize @weekly_payment
+    if @weekly_payment.save
+      redirect_to loanee_weekly_payments_path()
+    else
+      render :edit
+    end
+  end
+
   private
 
   def weekly_payment_params
