@@ -28,12 +28,25 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { action_button } from './action_button';
+import { initSweetalert } from '../plugins/init_sweetalert';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   action_button();
-  
+  initSweetalert('#sweet-alert-demo', {
+    title: "Are you sure?",
+    text: "This action cannot be reversed",
+    icon: "warning",
+    button: "Yes",
+  }, (value) => {
+    if (value) {
+      const link = document.querySelector('#confirm-link');
+      link.click();
+    }
+  });
+
 });
 
 import "controllers"
