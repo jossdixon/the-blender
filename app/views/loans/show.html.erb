@@ -1,8 +1,11 @@
 <div class="container mt-5">
   <div class="card-group">
     <div class="img-back">
+      <%= link_to users_path do %>
+        <p><i class="fas fa-long-arrow-alt-left fa-2x ">Loan</i></p>
+      <% end %>
       <%= link_to profiles_path do %>
-        <i class="fas fa-long-arrow-alt-left fa-2x "></i>
+        <p><i class="fas fa-long-arrow-alt-left fa-2x ">Profile</i></p>
       <% end %>
     </div>
     <div>
