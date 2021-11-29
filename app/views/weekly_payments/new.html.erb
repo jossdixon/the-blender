@@ -4,6 +4,6 @@
   <h2>Weekly payment for <%= @loanee.user.full_name%> is <strong style="color:red;">$<%= (@loanee.total / @loanee.loan.weeks).round(2) %></strong></h2>
   <%= render 'form', loanee:@loanee%>
     <%= link_to profile_path(@loanee.user.profile) do%>
-    <p style="text-align:left;"><i class="fas fa-long-arrow-alt-left"></i></p>
+    <p style="text-align:left;"><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
   <% end %>
 </div>
