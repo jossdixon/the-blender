@@ -3,9 +3,10 @@ class LoanPolicy < ApplicationPolicy
     def resolve
       scope.all if user_is_loan_officer?
     end
-      def user_is_loan_officer?
+
+    def user_is_loan_officer?
     user.profile.nil?
-  end
+    end
   end
 
   def show?

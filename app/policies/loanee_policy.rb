@@ -1,7 +1,11 @@
 class LoaneePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.all if user_is_loan_officer?
+    end
+
+    def user_is_loan_officer?
+    user.profile.nil?
     end
   end
 
@@ -16,6 +20,12 @@ class LoaneePolicy < ApplicationPolicy
   def show?
     user_is_loan_officer?
   end
+
+    def update?
+    user_is_loan_officer?
+  end
+
+
   private
 
   def user_is_loan_officer?
