@@ -9,12 +9,12 @@ before_action :set_loan, only: [ :show ]
     @loan_total = 0
     @loan.loanees.each do |loanee|
       loanee.weekly_payments.each do |payment|
-        @progress += payment.amount
+        @progress = @progress + payment.amount
       end
       @loan_total = @loan_total + loanee.total
     end
+    @percentage = (@progress/@loan_total)*100
 
-  @percentage = (@progress/@loan_total)
   end
 
   def new
