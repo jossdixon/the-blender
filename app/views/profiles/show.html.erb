@@ -37,6 +37,11 @@
           <p><strong>Phone Number:</strong> <%= @profile.phone_number %></p>
           <p><strong>Date of Birth:</strong> <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
           <p><strong>Number of Loans: </strong><%= @profile.user.debts.count %></p>
+          <% unless @profile.user.debts.count == 0 %>
+            <% @profile.user.debts.each do |debt|%>
+              <p><small><%= link_to debt.loan.start_date, loan_path(debt.loan)%></small></p>
+            <% end %>
+          <% end %>
           <p><small>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></small></p>
           <% unless @profile.user.active_debt.nil? %>
             <%= render 'group' %>
