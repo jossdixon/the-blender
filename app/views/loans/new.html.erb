@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-2">
   <h1>Create a loan</h1>
   <%= simple_form_for @loan do |f| %>
     <%= f.input :start_date, :as => :date, :start_year => Date.today.year %>
@@ -13,9 +13,17 @@
     <%= f.simple_fields_for :loanees do |loanee_form| %>
       <hr>
       <%= loanee_form.association :user, label: "Loanee #{i} ", collection: User.order('first_name ASC') %>
-      <%= loanee_form.input :total, collection:[500, 1000, 1500, 2000, 2500, 3000, 3500 ,4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000], label: 'Amount'  %>
+      <label>Loan Amount</label>
+      <div class="range-slider">
+        <div class="d-flex align-items-center p-4">
+          <%= loanee_form.input :total, label: false, input_html: { class:'range-slider__range', type:'range', value:'15000', min: '1000', max: '30000', step: '500' }, wrapper_html: { class:'m-0 w-100' } %>
+          <span class="range-slider__value">0</span>
+        </div>
+      </div>
       <% i += 1%>
     <% end %>
-    <%= f.submit class:"btn btn-primary"%>
+    <div class="d-flex justify-content-center m-4">
+      <%= f.submit class:"btn btn-large"%>
+    </div>
   <% end %>
 </div>
