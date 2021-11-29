@@ -6,7 +6,10 @@
       <% end %>
     </div>
     <div>
+      <div class="d-flex justify-content-between">
       <h2>Loan #<%= @loan.id%></h2>
+      <div><%= link_to "Add a loanee", new_loan_loanee_path(@loan.id), class:"btn btn-primary" %></div>
+      </div>
       <br>
       <p><strong>Started On:</strong> <%= @loan.start_date.strftime("%A %b %d") %></p>
       <p><strong>Duration: </strong><%= @loan.weeks %> weeks</p>

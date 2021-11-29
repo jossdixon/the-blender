@@ -5,9 +5,21 @@ class LoaneesController < ApplicationController
   end
 
   def new
+    @loanee = Loanee.new
+    @loan = Loan.find(params[:loan_id])
+    authorize @loanee
   end
 
   def create
+    @loanee = Loanee.new(loanee_params)
+    @loan = Loan.find(params[:loan_id])
+    @loanee.loan = @loan
+    authorize @loanee
+    if @loanee.save
+      redirect_to loan_path(@loan)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -35,6 +47,6 @@ class LoaneesController < ApplicationController
   end
 
   def loanee_params
-    params.require(:loanee).permit(:status, :total, :loan_id)
+    params.require(:loanee).permit(:status, :total, :loan_id, :user_id)
   end
 end
