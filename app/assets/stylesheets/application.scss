@@ -19,6 +19,11 @@ body {
   background: linear-gradient(180deg, rgba(244,244,244,1) 0%, rgba(117,179,187,1) 100%);
 }
 
+label {
+  color: $black;
+  font-size: 18px;
+}
+
 #confirm-link {
   display: none;
 }

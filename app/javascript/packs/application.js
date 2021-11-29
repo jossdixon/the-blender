@@ -26,14 +26,14 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { rangeSlider } from '../components/slider';
 import { action_button } from './action_button';
 // import { initSweetalert } from '../plugins/init_sweetalert';
 
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  // initSelect2();
+  rangeSlider();
   action_button();
   // initSweetalert('#sweet-alert-demo', {
   //   title: "Are you sure?",
