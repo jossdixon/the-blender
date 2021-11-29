@@ -4,7 +4,7 @@
   <br>
   <%= simple_form_for @loan do |f| %>
     <%= f.input :start_date, :as => :date, :start_year => Date.today.year %>
-    <%= f.input :weeks, label: 'How many weeks?' %>
+    <%= f.input :weeks, label: 'How many weeks?', class:'range-slider__range', type:'range', value:'15', min: '1', max: '30' %>
     <% i = 1%>
     <%= f.simple_fields_for :loanees do |loanee_form| %>
       <hr>
