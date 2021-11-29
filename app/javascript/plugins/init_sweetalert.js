@@ -1,13 +1,13 @@
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 
-const initSweetalert = (selector, options = {}, callback = () => { }) => {
-  const swalButton = document.querySelector(selector);
-  if (swalButton) { // protect other pages
-    swalButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      swal(options).then(callback); // <-- add the `.then(callback)`
-    });
-  }
-};
+// const initSweetalert = (selector, options = {}, callback = () => { }) => {
+//   const swalButton = document.querySelector(selector);
+//   if (swalButton) {
+//     swalButton.addEventListener('click', (event) => {
+//       event.preventDefault();
+//       swal(options).then(callback);
+//     });
+//   }
+// };
 
-export { initSweetalert };
+// export { initSweetalert };
