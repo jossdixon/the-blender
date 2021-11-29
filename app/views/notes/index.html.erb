@@ -7,9 +7,10 @@
 <br>
 <br>
   <% if profile.notes.any? %>
-    <% profile.notes.each do |note| %>
-     <p><%= note.created_at.strftime("%A %B %d %Y") %></p>
+    <% profile.notes.reverse_each do |note| %>
+     <p><i><%= note.created_at.strftime("%A %B %d %Y") %></i></p>
       <p><%= note.content %></p>
+      <hr>
     <% end %>
 <% else %>
   <p>There is not any notes about <%= profile.user.first_name%> yet...</p>
