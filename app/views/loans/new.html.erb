@@ -4,7 +4,7 @@
     <%= f.input :start_date, :as => :date, :start_year => Date.today.year %>
     <label>How many weeks?</label>
     <div class="range-slider">
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center p-4">
         <%= f.input :weeks, label: false, input_html: { class:'range-slider__range', type:'range', value:'15', min: '1', max: '30' }, wrapper_html: { class:'m-0 w-100' } %>
         <span class="range-slider__value">0</span>
       </div>

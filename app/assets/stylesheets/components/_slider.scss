@@ -18,7 +18,7 @@
 .range-slider {
   margin: auto;
   background-color: white;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 16px;
   font-size: 24px;
   box-shadow: 0 0 15px rgba(85, 85, 85, 0.2);
@@ -105,25 +105,27 @@ $range-label-width: 60px !default;
 
 // Range Label
 .range-slider__value {
+  width: 4rem;
   display: inline-block;
   position: relative;
-  color: $black;
+  color: whitesmoke;
   line-height: 16px;
   text-align: center;
-  border-radius: 3px;
+  background-color: $blue;
+  padding: 16px;
+  border-radius: 8px;
 
-
-  // &:after {
-  //   position: absolute;
-  //   top: 8px;
-  //   left: -7px;
-  //   width: 0;
-  //   height: 0;
-  //   border-top: 7px solid transparent;
-  //   border-right: 7px solid $range-label-color;
-  //   border-bottom: 7px solid transparent;
-  //   content: '';
-  // }
+  &:after {
+    position: absolute;
+    top: 16px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: 7px solid $blue;
+    border-bottom: 7px solid transparent;
+    content: '';
+  }
 }
 
 
