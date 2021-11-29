@@ -36,7 +36,8 @@
           <p><strong>Business: </strong><%= @profile.business_type %></p>
           <p><strong>Phone Number:</strong> <%= @profile.phone_number %></p>
           <p><strong>Date of Birth:</strong> <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
-          <p>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></p>
+          <p><strong>Number of paid-off Loans: </strong><%= @profile.user.debts.count %></p>
+          <p><small>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></small></p>
           <% unless @profile.user.active_debt.nil? %>
             <%= render 'group' %>
           <% end %>
