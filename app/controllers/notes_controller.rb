@@ -20,7 +20,7 @@ before_action :set_note, only: [ :show]
     @note.profile = @profile
     authorize @note
     if @note.save
-      redirect_to profile_path(@profile)
+      redirect_to profile_notes_path(@profile)
     else
       render :new
     end
