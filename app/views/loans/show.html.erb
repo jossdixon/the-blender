@@ -16,6 +16,8 @@
           <th>Name</th>
           <th>Total Debt Amount</th>
           <th>Weekly Payment</th>
+          <th>Loan Status</th>
+          <th>Edit</th>
         </tr>
         <div style="text-align: center;">
           <div class="progress">
@@ -29,6 +31,11 @@
               <td><%= link_to loanee.user.full_name, profile_path(loanee.user.profile) %></td>
               <td><%= loanee.total %></td>
               <td><%= (loanee.total / @loan.weeks).round(2) %></td>
+              <td><%= loanee.status %></td>
+              <td><%= link_to edit_loanee_path(loanee.id) do %>
+              <i class="fas fa-edit"></i>
+              <% end %>
+              </td>
             </tr>
           <% end %>
         </table>

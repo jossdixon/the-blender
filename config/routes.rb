@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :loans, only: [:new, :create, :show, :index] do
     resources :loanees, only: [:new, :create]
   end
-  resources :loanees, only: [:show] do
+  resources :loanees, only: [:show, :edit, :update] do
     resources :weekly_payments, only: [:new, :create, :index, :edit, :update]
   end
   resources :users, only: [:new, :index]
