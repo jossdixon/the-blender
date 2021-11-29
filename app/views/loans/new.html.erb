@@ -2,9 +2,12 @@
   <h1>Create a loan</h1>
   <%= simple_form_for @loan do |f| %>
     <%= f.input :start_date, :as => :date, :start_year => Date.today.year %>
+    <label>How many weeks?</label>
     <div class="range-slider">
-      <%= f.input :weeks, label: 'How many weeks?', input_html: { class:'range-slider__range', type:'range', value:'15', min: '1', max: '30' } %>
-      <span class="range-slider__value">0</span>
+      <div class="d-flex align-items-center">
+        <%= f.input :weeks, label: false, input_html: { class:'range-slider__range', type:'range', value:'15', min: '1', max: '30' }, wrapper_html: { class:'m-0 w-100' } %>
+        <span class="range-slider__value">0</span>
+      </div>
     </div>
     <% i = 1%>
     <%= f.simple_fields_for :loanees do |loanee_form| %>

@@ -26,14 +26,14 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { rangeSlider } from '../components/slider';
 import { action_button } from './action_button';
 // import { initSweetalert } from '../plugins/init_sweetalert';
 
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  // initSelect2();
+  rangeSlider();
   action_button();
   // initSweetalert('#sweet-alert-demo', {
   //   title: "Are you sure?",
@@ -50,23 +50,3 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 import "controllers"
-
-var rangeSlider = function () {
-  var slider = $('.range-slider'),
-    range = $('.range-slider__range'),
-    value = $('.range-slider__value');
-
-  slider.each(function () {
-
-    value.each(function () {
-      var value = $(this).prev().attr('value');
-      $(this).html(value);
-    });
-
-    range.on('input', function () {
-      $(this).next(value).html(this.value);
-    });
-  });
-};
-
-rangeSlider();
