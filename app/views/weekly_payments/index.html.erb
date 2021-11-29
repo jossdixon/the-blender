@@ -14,14 +14,14 @@
       <br>
     <%= render 'table', loanee:@loanee %>
       <br>
-        <br>
+     <br>
+  </div>
     <%= link_to profile_path(@loanee.user.profile) do%>
-      <p><i class="fas fa-long-arrow-alt-left"></i></p>
-    <% end %>
-  <% else %>
+      <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
+      <% end %>
+      <% else %>
     <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
     <%= link_to profile_path(@loanee.user.profile) do%>
-      <p><i class="fas fa-long-arrow-alt-left"></i></p>
+      <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
     <% end %>
   <% end %>
-</div>
