@@ -33,7 +33,7 @@
 $range-width: 100% !default;
 
 $range-handle-color: $blue !default;
-$range-handle-color-hover: $aqua-blue !default;
+$range-handle-color-hover: $blue !default;
 $range-handle-size: 32px !default;
 
 $range-track-color: $light-gray !default;
@@ -49,7 +49,7 @@ $range-label-width: 60px !default;
 
 .range-slider__range {
   -webkit-appearance: none;
-  width: calc(100% - (#{$range-label-width + 4px}));
+  width: 95%;
   height: $range-track-height;
   border-radius: 4px;
   background: $range-track-color;
@@ -108,24 +108,22 @@ $range-label-width: 60px !default;
   width: 4rem;
   display: inline-block;
   position: relative;
-  color: whitesmoke;
+  color: $blue;
   line-height: 16px;
   text-align: center;
-  background-color: $blue;
-  padding: 16px;
   border-radius: 8px;
 
-  &:after {
-    position: absolute;
-    top: 16px;
-    left: -7px;
-    width: 0;
-    height: 0;
-    border-top: 7px solid transparent;
-    border-right: 7px solid $blue;
-    border-bottom: 7px solid transparent;
-    content: '';
-  }
+  // &:after {
+  //   position: absolute;
+  //   top: 16px;
+  //   left: -7px;
+  //   width: 0;
+  //   height: 0;
+  //   border-top: 7px solid transparent;
+  //   border-right: 7px solid $blue;
+  //   border-bottom: 7px solid transparent;
+  //   content: '';
+  // }
 }
 
 
