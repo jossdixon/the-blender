@@ -12,7 +12,8 @@
     <% i = 1%>
     <%= f.simple_fields_for :loanees do |loanee_form| %>
       <hr>
-      <%= loanee_form.association :user, label: "Loanee #{i} ", collection: User.order('first_name ASC') %>
+      <label><%= "Loanee #{i}" %></label>
+      <%= loanee_form.association :user, label: false, collection: User.order('first_name ASC'), input_html: { data: { controller:'select2'}, style:'width: 100%' } %>
       <label>Loan Amount</label>
       <div class="range-slider">
         <div class="d-flex align-items-center p-4">
