@@ -1,7 +1,3 @@
-<% unless @user.active_debt.nil? %>
-  <%= pie_chart data: [@payments_amount, (@user.active_debt.total - @payments_amount)] %>
+<% unless user.active_debt.nil? %>
+<%= pie_chart user.payment_ratio, library: { pieSliceText: 'value' }, colors: ["#73E2A7", "#DD7373"], donut: true%>
 <% end %>
-<% unless @user.active_debt.nil? %>
-<%= pie_chart @user.payment_ratio, library: { pieSliceText: 'value' } %>
-<% end %>
-
