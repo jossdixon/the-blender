@@ -1,7 +1,7 @@
 class Loanee < ApplicationRecord
   belongs_to :user
   belongs_to :loan
-  has_many :weekly_payments
+  has_many :weekly_payments, dependent: :destroy
 
   validates :total, presence: true
   validates :status, presence: true
