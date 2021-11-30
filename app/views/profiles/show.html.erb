@@ -22,12 +22,12 @@
       <div class="col-sm text-center">
         <%= cl_image_tag(@profile.photo.key, :transformation=>[{:gravity=>"face", :height=>240, :width=>240, :crop=>"fill"}, {:radius=>"max"}]) %>
         <h1><%= @profile.user.full_name.titleize %>
-          <% unless @profile.user.active_debt.nil? %>
+          <% unless @profile.user.debts.nil? %>
             <%= render 'status' %></h1>
         <% end %>
         <%= render 'button_logic_show', profile:@profile %>
         <% unless @profile.notes.nil? %>
-          <h1><%= link_to "Notes", profile_notes_path(@profile), class:"btn btn-large"%> </h1>
+          <p><%= link_to 'Notes', profile_notes_path(@profile), class:"btn btn-large"%></p>
         <% end %>
       </div>
       <div class="col-sm text-center">

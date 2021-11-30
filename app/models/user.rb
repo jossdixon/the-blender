@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def active_debt
-    debts.active.first
+    debts.first
   end
 
 
