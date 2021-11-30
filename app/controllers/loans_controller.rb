@@ -85,5 +85,11 @@ before_action :set_loan, only: [ :show ]
     end
     amounts
   end
-end
 
+  def get_group_amount(loans)
+    loans.each do |loan|
+
+    end
+    actual_amount_group
+  end
+end
