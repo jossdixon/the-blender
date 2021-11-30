@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :loanees, only: [:show, :edit, :update] do
     resources :weekly_payments, only: [:new, :create, :index, :edit, :update]
   end
-  resources :users, only: [:new, :index]
+  resources :users, only: [:new, :index, :show]
   resources :weekly_payments, only: [:edit, :update]
   post 'user_profile', to: "users#create", as: 'user_profile'
 end

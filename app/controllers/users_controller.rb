@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show]
   def index
     if params[:query].present?
       @users = policy_scope(User).loan_search(params[:query])
@@ -9,6 +10,12 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
+    @user.build_profile
+    authorize @user
+  end
+
+  def show
     @user = User.new
     @user.build_profile
     authorize @user
@@ -30,5 +37,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :first_name, :last_name, profile_attributes: [:village, :phone_number, :birthday, :join_date, :business_type, :birthday, :photo])
+  end
+
+  def set_user
+    @user = User.find(params[:id])
+    authorize @user
   end
 end
