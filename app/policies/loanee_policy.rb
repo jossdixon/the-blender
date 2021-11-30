@@ -21,10 +21,9 @@ class LoaneePolicy < ApplicationPolicy
     user_is_loan_officer?
   end
 
-    def update?
+  def update?
     user_is_loan_officer?
   end
-
 
   private
 

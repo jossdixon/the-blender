@@ -8,9 +8,12 @@ class UserPolicy < ApplicationPolicy
   end
   end
 
-
-    def create?
+  def create?
     user_is_loan_officer?
+  end
+
+  def show?
+    user_is_loan_officer? || user.id == @user.id
   end
 
   private
