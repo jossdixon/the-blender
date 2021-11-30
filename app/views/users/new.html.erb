@@ -1,5 +1,5 @@
-<div class="container">
-  <h1>Create a profile</h1>
+<div class="container my-4 pb-4">
+  <h1 style="margin-bottom: 24px">Create a profile</h1>
   <%= simple_form_for @user, url: user_profile_path do |f| %>
     <%= f.input :email %>
     <%= f.input :password %>
@@ -13,6 +13,6 @@
       <%= profile_form.input :business_type %>
       <%= profile_form.input :photo, as: :file %>
     <% end %>
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-large" %>
   <% end %>
 </div>
