@@ -1,6 +1,7 @@
 require 'csv'
 require "open-uri"
 
+puts "Destroying loans, users, and profiles..."
 Loan.destroy_all
 User.destroy_all
 Profile.destroy_all
@@ -36,10 +37,10 @@ profile.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 profile.save!
 end
 puts "Creating loans..."
-5.times do
+7.times do
   loan = Loan.new(
-    weeks: (4..16).to_a.sample,
-    start_date: Date.today + rand(1..30),
+    weeks: rand(4..25),
+    start_date: Date.today + rand(-30..30),
     user: User.first
   )
   loan.save!
@@ -47,7 +48,8 @@ puts "Creating loans..."
     Loanee.create!(
       loan: loan,
       total: rand(1000..5000),
-      user: User.includes(:loanees, :profile).where(loanees: { user_id: nil }).where.not(profiles: { user_id: nil }).sample
+      user: User.includes(:loanees, :profile).where(loanees: { user_id: nil }).where.not(profiles: { user_id: nil }).sample,
+      status: [0, 2, 3].sample
     )
   end
 end
