@@ -3,7 +3,7 @@
     <% if user.debts.any?%>
       <% user.debts.each do |debt| %>
         <div class="col-sm-4">
-          <div class="card-identity" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(user.profile.photo.key, width: 300, height: 300, crop: 'fill', gravity: :face, radius: 16, background:"#0000ffff") %>)">
+          <div class="card-identity" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn.pixabay.com/photo/2020/10/30/08/56/money-5698019_1280.png)">
             <div class="card-identity-content">
               <%= link_to '', loan_path(debt.loan), class: 'card-link' %>
               <h3 class="card-village">Loan ID <%= debt.loan.id%></h2>

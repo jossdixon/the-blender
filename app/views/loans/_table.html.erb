@@ -8,7 +8,11 @@
   </tr>
     <% @loan.loanees.each_with_index do |loanee| %>
       <tr>
-        <td><i><%= link_to loanee.user.full_name, profile_path(loanee.user.profile) %></i></td>
+        <%if loanee.status == "active"%>
+          <td><i><%= link_to loanee.user.full_name, profile_path(loanee.user)%></i></td>
+        <% else %>
+          <td><i><%= link_to loanee.user.full_name%></i></td>
+        <% end %>
         <td><%= loanee.total %></td>
         <td><%= (loanee.total / @loan.weeks).round(2) %></td>
         <td><%= loanee.status %></td>
