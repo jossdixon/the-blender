@@ -2,10 +2,10 @@ require 'csv'
 require "open-uri"
 
 puts "Obliterating loans, loanees, weekly payments, users, and profiles..."
-Loan.destroy_all
 Loanee.destroy_all
-User.destroy_all
+Loan.destroy_all
 Profile.destroy_all
+User.destroy_all
 
 puts "Seeding..."
 User.create(first_name: 'Michiharu', last_name: 'Ono', email: 'michi@theblender.one', password: '123450987' )
