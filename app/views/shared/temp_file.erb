@@ -35,9 +35,10 @@
           <% end %>
         </div>
         <div class="d-flex" justify-content-around>
-          <% unless expected_amount_group == 0 %>
+           expected_amount_group == 0 %>
             <p>You collected $ <%= actual_amount_group %> out of  $ <%= expected_amount_group.round %> from this group</p>
           <% end %>
+          <% unless %>
           <% expected_amount_total= expected_amount_total + expected_amount_group %>
           <% actual_amount_total= actual_amount_total + actual_amount_group %>
         </div>

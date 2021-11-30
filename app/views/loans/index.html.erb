@@ -25,6 +25,9 @@
           <%= loanee.user.full_name%>
         <% end %>
       </div>
+      <div class="d-flex">
+          <p>You collected $ <%= loan.actual_amount_group %> out of  $ <%= loan.expected_amount_group.round %> from this group</p>
+      </div>
     </div>
     <hr>
   <% end %>
