@@ -28,6 +28,10 @@ class User < ApplicationRecord
     debts.first
   end
 
+  def percentage
+    get_payments_amount * 100 / get_total
+  end
+
   def payment_ratio
     # [['Task', 'Hours per Day'],
     [['Paid', get_payments_amount],
@@ -114,8 +118,6 @@ class User < ApplicationRecord
     #   {:name=>"Los Angeles Clippers", :data=>[["2016-11-19T17:42:18.795Z", 0.1], ["2016-11-20T07:56:55.717Z", 0.1]]}
     # ]
   end
-
-
 
 
   include PgSearch::Model

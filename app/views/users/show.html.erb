@@ -1,21 +1,28 @@
 <div class="container">
-  <h1>Hello <%= @user.first_name%>!</h1>
-  <p>Your nextpaymet is sheculed on: <%= render 'next_payment', user:@user, payments_amount:@payments_amount%></p>
-  <br>
-  <p style="text-align:center;"><%= @user.first_name%>'s Past Weekly Payments</p>
-  <%= render 'graph', user:@user%>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div class="row d-flex justify-content-around">
-    <div>
-      <p style="text-align:center;"><%= @user.first_name%>'s payment chart</p>
-      <%= render 'individual_chart', user:@user%>
+  <div class="card-profile">
+    <h1>Hello <%= @user.first_name%>!</h1>
+    <p>Your nextpaymet is sheculed on: <strong style="color:#DD7373;"><%= render 'next_payment', user:@user, payments_amount:@payments_amount%></strong></p>
+    <br>
+    <h3 style="text-align:center;"><%= @user.first_name%>'s Past Weekly Payments</h3>
+    <%= render 'graph', user:@user%>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row d-flex justify-content-around">
+      <div>
+        <h3 style="text-align:center;"><%= @user.first_name%>'s payment chart</h3>
+        <%= render 'individual_chart', user:@user%>
+      </div>
+      <div>
+        <h3 style="text-align:center;">Group payment chart</h3>
+        <%= render 'group_chart', user:@user%>
+      </div>
     </div>
-    <div>
-      <p style="text-align:center;">Group payment chart</p>
-      <%= render 'group_chart', user:@user%>
-    </div>
+        <br>
+    <br>
+    <br>
+    <h3 style="text-align:center;">Individual progress</h3>
+    <%= render 'progress', user:@user%>
   </div>
 </div>
