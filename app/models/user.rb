@@ -107,7 +107,7 @@ class User < ApplicationRecord
     active_debt.loan.loanees.each do |loanee|
       data_arr = []
       loanee.weekly_payments.each do |payment|
-        data_arr << ["#{payment.created_at.strftime("%B %d %Y")}", payment.amount]
+        data_arr << ["#{payment.created_at.strftime("%B %d %Y")}", payment.amount.round(2)]
       end
       format_arr << {:name=>"#{loanee.user.first_name}", :data=>data_arr}
     end
@@ -117,6 +117,10 @@ class User < ApplicationRecord
     #   {:name=>"Golden State Warriors", :data=>[["2016-11-19T17:42:18.699Z", 0.6622516556291391], ["2016-11-20T07:56:55.662Z", 0.6622516556291391]]},
     #   {:name=>"Los Angeles Clippers", :data=>[["2016-11-19T17:42:18.795Z", 0.1], ["2016-11-20T07:56:55.717Z", 0.1]]}
     # ]
+  end
+
+  def get_weeklypayment
+    debts.last.total / debts.last.loan.weeks
   end
 
 

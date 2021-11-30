@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card-profile">
     <h1>Hello <%= @user.first_name%>!</h1>
-    <p>Your nextpaymet is sheculed on: <strong style="color:#DD7373;"><%= render 'next_payment', user:@user, payments_amount:@payments_amount%></strong></p>
+    <p>Your next paymet is sheculed on: <strong style="color:#DD7373;"><%= render 'next_payment', user:@user, payments_amount:@payments_amount%></strong></p>
     <br>
     <h3 style="text-align:center;"><%= @user.first_name%>'s Past Weekly Payments</h3>
     <%= render 'graph', user:@user%>
