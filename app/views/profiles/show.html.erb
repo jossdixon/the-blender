@@ -35,14 +35,14 @@
           <p><strong>Location: </strong><%= @profile.village %></p>
           <p><strong>Business: </strong><%= @profile.business_type %></p>
           <p><strong>Phone Number:</strong> <%= @profile.phone_number %></p>
-          <p><strong>Date of Birth:</strong> <%= @profile.birthday.strftime("%A %B %d %Y") %></p>
+          <p><strong>Date of Birth:</strong> <%= @profile.birthday.strftime("%B %e, %Y") %></p>
+          <p><strong>Joined: </strong><%= @profile.join_date.strftime("%B %e, %Y") %></p>
           <p><strong>Number of Loans: </strong><%= @profile.user.debts.count %></p>
           <% unless @profile.user.debts.count == 0 %>
             <% @profile.user.debts.each do |debt|%>
-              <p><small><%= link_to debt.loan.start_date, loan_path(debt.loan)%></small></p>
+              <p><small><%= link_to debt.loan.start_date.strftime("%b %e, %Y"), loan_path(debt.loan)%></small></p>
             <% end %>
           <% end %>
-          <p><small>Joined on <%= @profile.join_date.strftime("%A %B %d %Y") %></small></p>
           <% unless @profile.user.active_debt.nil? %>
             <%= render 'group' %>
           <% end %>
