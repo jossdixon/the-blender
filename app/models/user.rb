@@ -28,6 +28,32 @@ class User < ApplicationRecord
     debts.first
   end
 
+  def payment_ratio
+    # [['Task', 'Hours per Day'],
+    [['Paid', get_payments_amount],
+    ['Not paid', get_total - get_payments_amount]]
+  end
+
+  def get_payments_amount
+    payments_amount = 0
+    unless active_debt.nil?
+      active_debt.weekly_payments.each do |payment|
+        payments_amount += payment.amount
+      end
+    else
+      return payments_amount
+    end
+    return payments_amount
+  end
+
+  def get_total
+    unless active_debt.nil?
+      active_debt.total
+    else
+      return 0
+    end
+  end
+
 
   include PgSearch::Model
   pg_search_scope :loan_search,
