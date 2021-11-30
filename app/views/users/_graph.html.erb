@@ -1,0 +1,5 @@
+<% unless user.active_debt.nil? %>
+<% user.active_debt.loan%>
+<%#= column_chart user.weekly_payment_graph, library: { pieSliceText: 'value' }%>
+<%= line_chart user.multiple_chart %>
+<% end %>

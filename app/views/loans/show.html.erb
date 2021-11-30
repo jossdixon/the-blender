@@ -1,23 +1,23 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between">
     <div class="img-back">
-      <%# <%= link_to profiles_path do %>
-        <%# <i class="fas fa-long-arrow-alt-left fa-2x "></i> %>
-      <%# end %> 
     </div>
     <div><%= link_to "Add a loanee", new_loan_loanee_path(@loan.id), class:"btn btn-primary" %></div>
   </div>
   <div>
-    <h2>Loan #<%= @loan.id%></h2>
+    <h1>Loan #<%= @loan.id%></h2>
     <br>
-    <p><strong>Started On:</strong> <%= @loan.start_date.strftime("%A %b %d") %></p>
-    <p><strong>Duration: </strong><%= @loan.weeks %> weeks</p>
-      <div class="progress">
-    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @percentage %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= @percentage.round(2) %>%</div>
-  </div>
-  <br>
+    <h2><strong>Started On:</strong> <%= @loan.start_date.strftime("%A %b %d") %></h2>
+    <h2><strong>Duration: </strong><%= @loan.weeks %> weeks</h2>
+    <br>
+    <br>
+    <%= render 'graph', loan:@loan%>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @percentage %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= @percentage.round(2) %>%</div>
+    </div>
+    <br>
     <div style="text-align: center;">
-    <%= render 'table', loan:@loan%>
+      <%= render 'table', loan:@loan%>
+    </div>
   </div>
-</div>
 </div>
