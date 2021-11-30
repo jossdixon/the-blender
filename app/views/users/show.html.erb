@@ -2,7 +2,7 @@
   <h1>Hello <%= @user.first_name%>!</h1>
   <p>Your nextpaymet is sheculed on: <%= render 'next_payment', user:@user, payments_amount:@payments_amount%></p>
   <br>
-  <p style="text-align:center;">Past Weekly Payments</p>
+  <p style="text-align:center;"><%= @user.first_name%>'s Past Weekly Payments</p>
   <%= render 'graph', user:@user%>
   <br>
   <br>
