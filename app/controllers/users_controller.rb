@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def get_payments_amount(user)
     payments_amount = 0
     unless user.active_debt.nil?
-      user.active_debt.last.weekly_payments.each do |payment|
+      user.active_debt.weekly_payments.each do |payment|
         payments_amount += payment.amount
       end
     else

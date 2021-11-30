@@ -24,6 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import "chartkick/chart.js"
 
 // Internal imports, e.g:
 import { rangeSlider } from '../components/slider';

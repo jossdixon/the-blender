@@ -1,0 +1,9 @@
+<% unless @user.active_debt.nil? %>
+  <%= line_chart User.group_by_day(:created_at).count %>
+<% end %>
+<% unless @user.active_debt.nil? %>
+  <%= pie_chart data: [@payments_amount, (@user.active_debt.total - @payments_amount)] %>
+<% end %>
+<% unless @user.active_debt.nil? %>
+  <%= column_chart WeeklyPayment.group_by_day_of_week(:created_at, format: "%a").count %>
+<% end %>
