@@ -1,8 +1,9 @@
 require 'csv'
 require "open-uri"
 
-puts "Destroying loans, users, and profiles..."
+puts "Obliterating loans, loanees, weekly payments, users, and profiles..."
 Loan.destroy_all
+Loanee.destroy_all
 User.destroy_all
 Profile.destroy_all
 
