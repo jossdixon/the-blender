@@ -1,0 +1,7 @@
+<% unless @user.active_debt.nil? %>
+  <%= pie_chart data: [@payments_amount, (@user.active_debt.total - @payments_amount)] %>
+<% end %>
+<% unless @user.active_debt.nil? %>
+<%= pie_chart @user.payment_ratio, library: { pieSliceText: 'value' } %>
+<% end %>
+

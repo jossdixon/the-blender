@@ -1,5 +1,7 @@
 <div class="container">
  <h1>Hello <%= @user.first_name%>!</h1>
  <p>Your nextpaymet is sheculed on: <%= render 'next_payment', user:@user, payments_amount:@payments_amount%></p>
-  <%= render 'chart', user:@user%>
+  <%= render 'individual_chart', user:@user%>
+  <%= render 'group_chart', user:@user%>
+  <%= link_to "Payment History", loanee_weekly_payments_path(Loanee.find(@user.profile.user.active_debt.id)), class: "btn btn-large" %>
 </div>

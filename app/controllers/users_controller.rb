@@ -16,8 +16,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @payments_amount = get_payments_amount(@user)
-    @total = get_total(@user)
+    @payments_amount = @user.get_payments_amount
+    @total = @user.get_total
     @data = [@payments, @total]
   end
 
@@ -44,23 +44,23 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  def get_payments_amount(user)
-    payments_amount = 0
-    unless user.active_debt.nil?
-      user.active_debt.weekly_payments.each do |payment|
-        payments_amount += payment.amount
-      end
-    else
-      return payments_amount
-    end
-    return payments_amount
-  end
+  # def get_payments_amount(user)
+  #   payments_amount = 0
+  #   unless user.active_debt.nil?
+  #     user.active_debt.weekly_payments.each do |payment|
+  #       payments_amount += payment.amount
+  #     end
+  #   else
+  #     return payments_amount
+  #   end
+  #   return payments_amount
+  # end
 
-  def get_total(user)
-    unless user.active_debt.nil?
-      user.active_debt.total
-    else
-      return 0
-    end
-  end
+  # def get_total(user)
+  #   unless user.active_debt.nil?
+  #     user.active_debt.total
+  #   else
+  #     return 0
+  #   end
+  # end
 end
