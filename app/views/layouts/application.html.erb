@@ -7,8 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <%# <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> %>
     <%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+    <%= render 'shared/ios_pwa_links' %>
   </head>
   <body>
     <%= render 'shared/navbar' %>
