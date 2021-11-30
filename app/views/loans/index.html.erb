@@ -3,7 +3,11 @@
     <% expected_amount_total = 0 %>
     <% actual_amount_total = 0 %>
     <div class="card-title-dash">
-      <h1>Today is <%= Date.today.strftime("%A %B %d %Y") %></h1>
+      <h1>Today is <%= @date.strftime("%A %B %d %Y") %></h1>
+      <%= form_tag(loans_path, method: :get) do %>
+        <%= date_field_tag :on_date %>
+        <%= button_tag  %>
+      <% end %>
     </div>
   </div>
   <div class="d-flex justify-content-around align-items-center p-3">
@@ -24,13 +28,13 @@
         <%loan.loanees.each do |loanee| %>
           <%= cl_image_tag(loanee.user.profile.photo.key, :transformation=>[
             {:gravity=>"face", :height=>80, :width=>80, :crop=>"fill"}, {:radius=>"max"}]) %>
-            <div class="flex-column">
-              <p><%= loanee.user.full_name%></p>
-              <p>Amount due $<%= (loanee.total / loan.weeks).round %></p>
-            </div>
+          <div class="flex-column">
+            <p><%= loanee.user.full_name%></p>
+            <p>Amount due $<%= (loanee.total / loan.weeks).round %></p>
+          </div>
         <% end %>
       </div>
-        <div class="d-flex justify-content-around align-items-left px-3">
+      <div class="d-flex justify-content-around align-items-left px-3">
         <p>$ <%= loan.expected_amount_group.round %> Expected per group</p>
         <p> $ <%= loan.actual_amount_group.round %> Amount collected per group </p>
       </div>

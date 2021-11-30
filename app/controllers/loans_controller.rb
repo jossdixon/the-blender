@@ -1,8 +1,9 @@
 class LoansController < ApplicationController
 before_action :set_loan, only: [ :show ]
   def index
+    @date = Date.parse(params[:on_date]) || Date.today
     @loans = policy_scope(Loan)
-    @loans_today = get_today_payments(@loans)
+    @loans_today = get_today_payments(@loans, @date)
     @amounts = get_expected_amount(@loans_today)
   end
 
@@ -50,12 +51,12 @@ before_action :set_loan, only: [ :show ]
     params.require(:loan).permit(:weeks, :start_date, loanees_attributes: [ :user_id, :total, :status])
   end
 
-  def get_today_payments(loans)
+  def get_today_payments(loans, on_date = Date.today)
     loans_today= []
     loans.each do |loan|
       i = 1
       loan.weeks.times do
-        if ((loan.start_date) + (i * 7)) == Date.today
+        if ((loan.start_date) + (i * 7)) == on_date
           loans_today << loan
           i = i + 1
         end
