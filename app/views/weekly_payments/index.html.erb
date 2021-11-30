@@ -5,11 +5,20 @@
   <%= link_to profile_path(@loanee.user.profile) do%>
     <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
   <% end %>
-  <%= render 'chart', user:@loanee.user%>
-  <p>Loan ID: <strong><i><%= @loanee.loan.id %></i></strong></p>
-  <p>Loan Start Date: <strong><i><%= @loanee.loan.start_date %></i></strong></p>
-  <p>Loan Total for <%= @loanee.user.first_name %>: $<strong><i><%= @loanee.total %></i></strong></p>
-  <h3>Next weekly payment date is on <%= render 'next_payment', loanee:@loanee %></h3>
+  <div class="row d-flex justify-content-around">
+    <div>
+    <%= render 'chart', user:@loanee.user%>
+    <p style="text-align:center;"><strong>Loan Repayment Chart</strong></p>
+    </div>
+    <div>
+      <p>Loan ID: <strong><i><%= @loanee.loan.id %></i></strong></p>
+      <p>Loan Start Date: <strong><i><%= @loanee.loan.start_date %></i></strong></p>
+      <p>Loan Total for <%= @loanee.user.first_name %>: $<strong><i><%= @loanee.total %></i></strong></p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <h3 style="text-align:center;">Next weekly payment date is on <u><%= render 'next_payment', loanee:@loanee %></u></h3>
   <br>
   <% if @loanee.weekly_payments.any?%>
     <div style="text-align: center;">
