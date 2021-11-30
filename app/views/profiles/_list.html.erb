@@ -4,15 +4,24 @@
       <div class="card-identity" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(profile.photo.key, width: 300, height: 300, crop: 'fill', gravity: :face, radius: 16, background:"#0000ffff") %>)">
         <div class="card-identity-content">
           <%= link_to '', profile_path(profile), class: 'card-link' %>
-          <h2 class="card-name"><%= profile.user.full_name.titleize %><%= render 'index_status', profile: profile %></h2>
-          <%# render 'status', profile: profile %>
-          <h3 class="card-village"><%= profile.village %></h3>
-          <%# THE BELOW COMMENTED OUT TO REMOVE THE PROFILE BUTTONS %>
-          <%# <div class="card-identity-button"> %>
-          <%# render 'index_logic', profile: @profile %>
-          <%# </div> %>
-        </div>
+          <h2 class="card-name"><%= profile.user.full_name.titleize %></h2>
+          <% unless profile.user.debts == []  %>
+            <div class="card-identity-status">
+              <% case profile.user.debts.last.status
+              when 'active' %>
+              <i class="fas fa-check-circle" style="color: #309C76"></i>
+              <% when 'closed' %>
+              <i class="fas fa-check-circle" style="color: #B7B5B3"></i>
+              <% when 'default' %>
+              <i class="fas fa-times-circle" style="color: #F71735"></i>
+              <% when 'late' %>
+              <i class="fas fa-clock" style="color: #F5F749"></i>
+            <% end %>
+          </div>
+        <% end %>
+        <h3 class="card-village"><%= profile.village %></h3>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
 </div>
