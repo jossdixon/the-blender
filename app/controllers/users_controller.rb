@@ -16,9 +16,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.new
-    @user.build_profile
-    authorize @user
+    @payments_amount = get_payments_amount(@user)
+    @total = get_total(@user)
+    @data = [@payments, @total]
   end
 
   def create
@@ -42,5 +42,25 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
     authorize @user
+  end
+
+  def get_payments_amount(user)
+    payments_amount = 0
+    unless user.active_debt.nil?
+      user.active_debt.last.weekly_payments.each do |payment|
+        payments_amount += payment.amount
+      end
+    else
+      return payments_amount
+    end
+    return payments_amount
+  end
+
+  def get_total(user)
+    unless user.active_debt.nil?
+      user.active_debt.total
+    else
+      return 0
+    end
   end
 end
