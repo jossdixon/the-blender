@@ -5,6 +5,7 @@
   <%= link_to profile_path(@loanee.user.profile) do%>
     <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
   <% end %>
+  <%= render 'chart', user:@loanee.user%>
   <p>Loan ID: <strong><i><%= @loanee.loan.id %></i></strong></p>
   <p>Loan Start Date: <strong><i><%= @loanee.loan.start_date %></i></strong></p>
   <p>Loan Total for <%= @loanee.user.first_name %>: $<strong><i><%= @loanee.total %></i></strong></p>
