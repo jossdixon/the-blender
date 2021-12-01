@@ -29,26 +29,26 @@ class User < ApplicationRecord
   end
 
   def percentage
-    get_payments_amount * 100 / get_total
+    (get_payments_amount.to_f * 100 / get_total.to_f)
   end
 
   def payment_ratio
     # [['Task', 'Hours per Day'],
-    [['Paid', get_payments_amount],
-    ['Not paid', get_total - get_payments_amount]]
+    [['Paid', get_payments_amount.to_f],
+    ['Not paid', (get_total.to_f - get_payments_amount.to_f)]]
   end
 
   def payment_ratio_group
     # [['Task', 'Hours per Day'],
-    [['Paid', get_payments_amount_group],
-    ['Not paid', get_total_group - get_payments_amount_group]]
+    [['Paid', get_payments_amount_group.to_f],
+    ['Not paid', get_total_group.to_f - get_payments_amount_group.to_f]]
   end
 
   def weekly_payment_graph
     data_format = []
     unless active_debt.nil?
       active_debt.weekly_payments.each do |payment|
-        data_format << [payment.created_at.strftime("%B %d %Y"), payment.amount]
+        data_format << [payment.created_at.strftime("%B %d %Y"), payment.amount.to_f]
       end
     else
       return data_format
@@ -60,7 +60,7 @@ class User < ApplicationRecord
     payments_amount = 0
     unless active_debt.nil?
       active_debt.weekly_payments.each do |payment|
-        payments_amount += payment.amount
+        payments_amount += payment.amount.to_f
       end
     else
       return payments_amount
@@ -70,7 +70,7 @@ class User < ApplicationRecord
 
   def get_total
     unless active_debt.nil?
-      active_debt.total
+      active_debt.total.to_f
     else
       return 0
     end
@@ -81,7 +81,7 @@ class User < ApplicationRecord
     unless active_debt.nil?
       active_debt.loan.loanees.each do |loanee|
         loanee.weekly_payments.each do |payment|
-          payments_amount_group += payment.amount
+          payments_amount_group += payment.amount.to_f
         end
       end
     else
@@ -94,7 +94,7 @@ class User < ApplicationRecord
     total = 0
     unless active_debt.nil?
       active_debt.loan.loanees.each do |loanee|
-        total += loanee.total
+        total += loanee.total.to_f
       end
     else
       return total
@@ -107,7 +107,7 @@ class User < ApplicationRecord
     active_debt.loan.loanees.each do |loanee|
       data_arr = []
       loanee.weekly_payments.each do |payment|
-        data_arr << ["#{payment.created_at.strftime("%B %d %Y")}", payment.amount.round(2)]
+        data_arr << ["#{payment.created_at.strftime("%B %d %Y")}", payment.amount.to_f.round(2)]
       end
       format_arr << {:name=>"#{loanee.user.first_name}", :data=>data_arr}
     end
@@ -120,7 +120,7 @@ class User < ApplicationRecord
   end
 
   def get_weeklypayment
-    debts.last.total / debts.last.loan.weeks
+    debts.last.total.to_f / debts.last.loan.weeks
   end
 
 
