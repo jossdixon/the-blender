@@ -19,19 +19,21 @@
       </div>
     </div>
     <br>
-    <% if @loanee.weekly_payments.any?%>
-      <div style="text-align: center;">
+      <% if @loanee.weekly_payments.any?%>
+        <div style="text-align: center;">
+          <br>
+          <%= render 'table', loanee:@loanee %>
+          <br>
+          <br>
+          <h3 style="text-align:center;">Next weekly payment date for <%= @loanee.user.first_name %> is on <i style="color:#DD7373;"><%= render 'next_payment', loanee:@loanee %></i></h3>
         <br>
-        <%= render 'table', loanee:@loanee %>
-        <br>
-        <h3 style="text-align:center;">Next weekly payment date for <%= @loanee.user.first_name %> is on <i style="color:#DD7373;"><%= render 'next_payment', loanee:@loanee %></i></h3>
-      </div>
-      <% render 'date_card', loanee:@loanee %>
-    <% else %>
-      <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
-      <%= link_to profile_path(@loanee.user.profile) do%>
-        <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
+        <div> <%= render 'payment_schedule', loanee:@loanee %></div>
+        </div>
+      <% else %>
+        <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
+        <%= link_to profile_path(@loanee.user.profile) do%>
+          <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 </div>
