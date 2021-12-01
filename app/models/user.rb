@@ -47,7 +47,7 @@ class User < ApplicationRecord
   def weekly_payment_graph
     data_format = []
     unless active_debt.nil?
-      active_debt.weekly_payments.each do |payment|
+      debts.last.weekly_payments.each do |payment|
         data_format << [payment.created_at.strftime("%B %d %Y"), payment.amount.to_f]
       end
     else
@@ -59,7 +59,7 @@ class User < ApplicationRecord
   def get_payments_amount
     payments_amount = 0
     unless active_debt.nil?
-      active_debt.weekly_payments.each do |payment|
+      debts.last.weekly_payments.each do |payment|
         payments_amount += payment.amount.to_f
       end
     else
@@ -70,7 +70,7 @@ class User < ApplicationRecord
 
   def get_total
     unless active_debt.nil?
-      active_debt.total.to_f
+      debts.last.total.to_f
     else
       return 0
     end
@@ -79,7 +79,7 @@ class User < ApplicationRecord
   def get_payments_amount_group
     payments_amount_group = 0
     unless active_debt.nil?
-      active_debt.loan.loanees.each do |loanee|
+      debts.last.loan.loanees.each do |loanee|
         loanee.weekly_payments.each do |payment|
           payments_amount_group += payment.amount.to_f
         end
@@ -93,7 +93,7 @@ class User < ApplicationRecord
   def get_total_group
     total = 0
     unless active_debt.nil?
-      active_debt.loan.loanees.each do |loanee|
+      debts.last.loan.loanees.each do |loanee|
         total += loanee.total.to_f
       end
     else
@@ -104,7 +104,7 @@ class User < ApplicationRecord
 
   def multiple_chart
     format_arr = []
-    active_debt.loan.loanees.each do |loanee|
+    debts.last.loan.loanees.each do |loanee|
       data_arr = []
       loanee.weekly_payments.each do |payment|
         data_arr << ["#{payment.created_at.strftime("%B %d")}", payment.amount.to_f]
