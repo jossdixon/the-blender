@@ -33,11 +33,13 @@
         <%loan.loanees.each do |loanee| %>
           <%= cl_image_tag(loanee.user.profile.photo.key, :transformation=>[
             {:gravity=>"face", :height=>80, :width=>80, :crop=>"fill"}, {:radius=>"max"}]) %>
+
           <div class="flex-column">
             <p><%= link_to loanee.user.full_name, profile_path(loanee.user.profile)%></p>
             <p>Amount due $<%= (loanee.total.to_f / loan.weeks).round %></p>
           </div>
         <% end %>
+
       </div>
       <div class="d-flex justify-content-around align-items-left px-3">
         <p>$ <%= loan.expected_amount_group.round %> Expected per group</p>
