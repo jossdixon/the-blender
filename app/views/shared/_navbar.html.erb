@@ -7,38 +7,43 @@
   </button>
   <nav>
     <ul class="navbar-nav mr-auto px-3">
-      <% if user_signed_in? %>
-      <!-- -->
-      <li>
+      <% if user_signed_in? && current_user.profile.nil?%>
+        <!-- -->
+        <li>
           <%= link_to users_path do %>
-          <i class="fas fa-file-contract fa-2x"></i>
+            <i class="fas fa-file-contract fa-2x"></i>
           <% end %>
-          </li>
-          <li>
+        </li>
+        <li>
           <%= link_to new_loan_path do %>
-          <i class="fas fa-dollar-sign fa-2x"></i>
+            <i class="fas fa-dollar-sign fa-2x"></i>
           <% end %>
-          </li>
-          <li>
+        </li>
+        <li>
           <%= link_to new_user_path do %>
-          <i class="fas fa-female fa-2x"></i>
+            <i class="fas fa-female fa-2x"></i>
           <% end %>
-          </li>
-          <li>
+        </li>
+        <li>
           <%= link_to profiles_path do %>
-          <i class="fas fa-search fa-2x"></i>
+            <i class="fas fa-search fa-2x"></i>
           <% end %>
-          </li>
-          <li>
+        </li>
+        <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt fa-2x"></i>
+            <i class="fas fa-sign-out-alt fa-2x"></i>
           <% end %>
-          </li>
-
-      <!-- -->
-      <% else %>
+        </li>
+        <!-- -->
+      <% elsif  current_user.profile.nil? %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt fa-2x"></i>
+          <% end %>
         </li>
       <% end %>
     </ul>
