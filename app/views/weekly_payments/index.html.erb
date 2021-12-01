@@ -1,39 +1,36 @@
 <div class="container">
-  <h1>Weekly Payment for</h1>
-  <h2>"<%= @loanee.user.full_name %>"</h2>
-  <br>
-  <%= link_to profile_path(@loanee.user.profile) do%>
-    <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
-  <% end %>
-  <div class="row d-flex justify-content-around">
-    <div>
-    <%= render 'chart', user:@loanee.user%>
-    <p style="text-align:center;"><strong>Loan Repayment Chart</strong></p>
-    </div>
-    <div>
-      <p>Loan ID: <strong><i><%= @loanee.loan.id %></i></strong></p>
-      <p>Loan Start Date: <strong><i><%= @loanee.loan.start_date %></i></strong></p>
-      <p>Loan Total for <%= @loanee.user.first_name %>: $<strong><i><%= @loanee.total %></i></strong></p>
-    </div>
-  </div>
-  <br>
-  <br>
-  <h3 style="text-align:center;">Next weekly payment date is on <u><%= render 'next_payment', loanee:@loanee %></u></h3>
-  <br>
-  <% if @loanee.weekly_payments.any?%>
-    <div style="text-align: center;">
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= @progress.round(2) %>%</div>
-      </div>
-      <br>
-      <%= render 'table', loanee:@loanee %>
-      <br>
-      <br>
-    </div>
-  <% else %>
-    <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
+  <div class="card-profile">
+    <h1>Weekly Payment for <%= @loanee.user.first_name %></h1>
+    <br>
     <%= link_to profile_path(@loanee.user.profile) do%>
       <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
     <% end %>
-  <% end %>
+    <div class="row d-flex justify-content-around align-items-end">
+      <div>
+        <%= render 'chart', user:@loanee.user%>
+        <p style="text-align:center;"><strong>Loan Repayment Chart</strong></p>
+      </div>
+      <div>
+        <p><i class="fas fa-money-check"></i> Loan#: <strong><i><%= @loanee.loan.id %></i></strong></p>
+        <p><i class="fas fa-calendar-day"></i> Loan Start Date: <strong><i><%= @loanee.loan.start_date %></i></strong></p>
+        <p><i class="fas fa-user-clock"></i> Duration: <strong><i><%= @loanee.loan.weeks %></i></strong> weeks</p>
+        <p><i class="fas fa-coins"></i> Loan Total <%= @loanee.user.first_name %>: $<strong><i><%= @loanee.total %></i></strong></p>
+        <p><i class="fas fa-comment-dollar"></i> Weekly Payment Amount: $<strong><i><%= @loanee.user.get_weeklypayment.round(2) %></i></strong></p>
+      </div>
+    </div>
+    <br>
+    <% if @loanee.weekly_payments.any?%>
+      <div style="text-align: center;">
+        <br>
+        <%= render 'table', loanee:@loanee %>
+        <br>
+        <h3 style="text-align:center;">Next weekly payment date for <%= @loanee.user.first_name %> is on <i style="color:#DD7373;"><%= render 'next_payment', loanee:@loanee %></i></h3>
+      </div>
+    <% else %>
+      <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
+      <%= link_to profile_path(@loanee.user.profile) do%>
+        <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
+      <% end %>
+    <% end %>
+  </div>
 </div>

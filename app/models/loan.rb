@@ -20,8 +20,16 @@ class Loan < ApplicationRecord
   def expected_amount_group
     expected_amount_group = 0
     self.loanees.each do |loanee|
-      expected_amount_group= expected_amount_group + (loanee.total / self.weeks)
+      expected_amount_group += (loanee.total / self.weeks)
     end
-    expected_amount_group
+    expected_amount_group.round(2)
+  end
+
+    def loan_total
+    loan_total = 0
+    loanees.each do |loanee|
+      loan_total += loanee.total
+    end
+    loan_total.round(2)
   end
 end
