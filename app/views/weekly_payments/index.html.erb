@@ -1,10 +1,7 @@
 <div class="container">
   <div class="card-profile">
-    <h1>Weekly Payment for <%= @loanee.user.first_name %></h1>
+    <h1><%= @loanee.user.first_name %>'s weekly payment information</h1>
     <br>
-    <%= link_to profile_path(@loanee.user.profile) do%>
-      <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
-    <% end %>
     <div class="row d-flex justify-content-around align-items-end">
       <div>
         <%= render 'chart', user:@loanee.user%>
@@ -19,20 +16,20 @@
       </div>
     </div>
     <br>
-      <% if @loanee.weekly_payments.any?%>
-        <div style="text-align: center;">
-          <br>
-          <%= render 'table', loanee:@loanee %>
-          <br>
-          <br>
-          <p style="text-align:center;">Next weekly payment date for <%= @loanee.user.first_name %> is on <i><%= render 'next_payment', loanee:@loanee %></i></p>
+    <% if @loanee.weekly_payments.any?%>
+      <div style="text-align: center;">
+        <br>
+        <%= render 'table', loanee:@loanee %>
+        <br>
+        <br>
+        <p style="text-align:center;">Next payment date for <%= @loanee.user.first_name %> is due <i><%= render 'next_payment', loanee:@loanee %></i></p>
         <div> <%= render 'payment_schedule', loanee:@loanee %></div>
-        </div>
-      <% else %>
-        <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
-        <%= link_to profile_path(@loanee.user.profile) do%>
-          <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
-        <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% else %>
+      <p class="mark-yellow"><%= @loanee.user.full_name.titleize %> has not made any repayments yet.</p>
+    <% end %>
+    <%= link_to profile_path(@loanee.user.profile) do%>
+      <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
+    <% end %>
+  </div>
 </div>

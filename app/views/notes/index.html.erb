@@ -1,21 +1,19 @@
 <div class="container">
-<%profile = Profile.find(params[:profile_id])%>
-<h1>Notes about</h1>
-<h2>"<%= profile.user.full_name%>"</h2>
-<br>
-<%= link_to "Add a note", new_profile_note_path(profile), class:"btn btn-primary"%>
-<br>
-<br>
-  <% if profile.notes.any? %>
-    <% profile.notes.reverse_each do |note| %>
-     <p><i><%= note.created_at.strftime("%A %B %d %Y") %></i></p>
-      <p><%= note.content %></p>
-      <hr>
+  <div class="card-profile">
+    <%profile = Profile.find(params[:profile_id])%>
+    <h2>Notes about <%= profile.user.full_name.titleize%></h2>
+    <% if profile.notes.any? %>
+      <% profile.notes.reverse_each do |note| %>
+        <p><i><%= note.created_at.strftime("%A %B %d %Y") %></i></p>
+        <p><%= note.content %></p>
+        <hr>
+      <% end %>
+    <% else %>
+      <p>No notes about <%= profile.user.first_name.titleize%> yet.</p>
     <% end %>
-<% else %>
-  <p>There is not any notes about <%= profile.user.first_name%> yet...</p>
-  <% end %>
-      <%= link_to profile_path(profile) do%>
+    <%= link_to profile_path(profile) do%>
       <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
     <% end %>
+  </div>
+  <%= link_to "New Note", new_profile_note_path(profile), class:"btn btn-large"%>
 </div>
