@@ -6,7 +6,7 @@ class WeeklyPaymentsController < ApplicationController
     @loanee.weekly_payments.each do |payment|
       past_payments += payment.amount.to_f
     end
-    @progress = past_payments/@loanee.total * 100
+    @progress = past_payments/@loanee.total.to_f * 100
   end
 
   def new
