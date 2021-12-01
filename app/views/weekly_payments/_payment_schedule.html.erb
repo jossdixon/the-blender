@@ -1,0 +1,7 @@
+<div class="row d-flex">
+  <% i = 1 %>
+  <% @loanee.loan.times.each do |expected_payment|%>
+    <div class="date-card"><%= ((@loanee.loan.start_date) + (i * 7)).strftime('%Y-%m-%d') %></div>
+    <% i += 1 %>
+  <% end %>
+</div>

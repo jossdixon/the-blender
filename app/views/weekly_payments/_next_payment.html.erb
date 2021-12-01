@@ -1,7 +1,6 @@
-  <% remainder = @loanee.total%>
 <% payment_count = @loanee.weekly_payments.count %>
 <% @loanee.weekly_payments.first(payment_count).each do |weekly_payment|%>
-    <% if weekly_payment == @loanee.weekly_payments.first(payment_count).last && payment_count != @loanee.loan.weeks %>
-      <%= ((@loanee.loan.start_date) + ((payment_count + 1) * 7)).strftime("%A %B %d %Y") %>
-    <% end %>
+  <% if weekly_payment == @loanee.weekly_payments.first(payment_count).last && payment_count != @loanee.loan.weeks %>
+    <%= ((@loanee.loan.start_date) + ((payment_count + 1) * 7)).strftime("%A %B %d %Y") %>
+  <% end %>
 <% end %>

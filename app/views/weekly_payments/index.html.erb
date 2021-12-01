@@ -26,6 +26,7 @@
         <br>
         <h3 style="text-align:center;">Next weekly payment date for <%= @loanee.user.first_name %> is on <i style="color:#DD7373;"><%= render 'next_payment', loanee:@loanee %></i></h3>
       </div>
+      <% render 'date_card', loanee:@loanee %>
     <% else %>
       <p class="mark-yellow"><%= @loanee.user.full_name%> has not made any payment yet</p>
       <%= link_to profile_path(@loanee.user.profile) do%>
