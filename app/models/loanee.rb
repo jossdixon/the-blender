@@ -7,5 +7,5 @@ class Loanee < ApplicationRecord
   validates :status, presence: true
 
   enum status: { active: 0, closed: 1, late: 2, defaulted: 3 }
-
+  monetize :total_cents
 end

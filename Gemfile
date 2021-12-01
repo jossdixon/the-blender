@@ -76,3 +76,4 @@ gem 'pundit'
 gem 'faker'
 
 gem 'money-rails', '~>1.12'
+
