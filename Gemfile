@@ -25,6 +25,7 @@ gem 'pg_search', '~> 2.3.0'
 gem 'bootstrap-datepicker-rails'
 gem "chartkick"
 gem 'groupdate'
+gem 'money-rails', '~>1.12'
 
 
 
