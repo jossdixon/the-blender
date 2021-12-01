@@ -34,18 +34,17 @@
             <i class="fas fa-sign-out-alt fa-2x"></i>
           <% end %>
         </li>
-        <!-- -->
-      <% elsif  current_user.profile.nil? %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% else %>
-        <li>
+        <% elsif user_signed_in? && current_user.profile.nil? == false %>
+                <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fas fa-sign-out-alt fa-2x"></i>
           <% end %>
         </li>
-      <% end %>
-    </ul>
-  </nav>
+        <!-- -->
+      <% else%>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+    <% end %>
+  </ul>
+</nav>
 </div>
