@@ -12,12 +12,8 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def show?
-    user_is_loan_officer? || user.id == profile.user_id
+    user_is_loan_officer?
   end
-
-  # def show?
-  #   user_is_loan_officer?
-  # end
 
   def create?
     user_is_loan_officer?

@@ -1,5 +1,5 @@
 <div class="row align-items-start mb-2" data-refresh-list-target="list">
-  <% @users.each do |user| %>
+  <% users.each do |user| %>
     <% if user.debts.any?%>
       <% user.debts.each do |debt| %>
         <div class="col-sm-4">
@@ -9,7 +9,7 @@
               <%= link_to '', loan_path(debt.loan), class: 'card-link' %>
               <h3 class="card-village">Loan ID <%= debt.loan.id%></h2>
               <h3 class="card-name">Start Date <%= debt.loan.start_date%></h2>
-              <h2 class="card-name"><%= user.full_name.titleize %></h2>
+              <h2 class="card-name"><%= user.full_name %></h2>
             </div>
           </div>
         </div>

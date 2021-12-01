@@ -10,7 +10,7 @@ class LoanPolicy < ApplicationPolicy
   end
 
   def show?
-    user_is_loan_officer? || user.id == loan.user_id
+    user_is_loan_officer?
   end
 
   def create?
