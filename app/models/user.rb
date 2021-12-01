@@ -107,7 +107,7 @@ class User < ApplicationRecord
     active_debt.loan.loanees.each do |loanee|
       data_arr = []
       loanee.weekly_payments.each do |payment|
-        data_arr << ["#{payment.created_at.strftime("%B %d %Y")}", payment.amount.round(2)]
+        data_arr << ["#{payment.created_at.strftime("%Y %d %b")}", payment.amount.round(2)]
       end
       format_arr << {:name=>"#{loanee.user.first_name}", :data=>data_arr}
     end
