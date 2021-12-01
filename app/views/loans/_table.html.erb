@@ -9,7 +9,7 @@
     <% @loan.loanees.each_with_index do |loanee| %>
       <tr>
         <%if loanee.status == "active"%>
-          <td class="name"><i><%= link_to loanee.user.full_name, profile_path(loanee.user)%></i></td>
+          <td class="name"><i><%= link_to loanee.user.full_name, profile_path(loanee.user.profile)%></i></td>
         <% else %>
           <td class="name"><i><%= loanee.user.full_name%></i></td>
         <% end %>

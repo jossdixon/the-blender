@@ -1,6 +1,6 @@
 <div class="card-group-container">
-  <p><%= link_to "Go to Loan group", loan_path(@profile.user.active_debt.loan), class:"btn btn-primary"%></p>
-  <% @profile.user.active_debt.loan.loanees.each do |person| if person.user != @profile.user %>
+  <p><%= link_to "Go to Loan group", loan_path(@profile.user.debts.last.loan), class:"btn btn-primary"%></p>
+  <% @profile.user.debts.last.loan.loanees.each do |person| if person.user != @profile.user %>
   <div class="card-member">
     <%= cl_image_tag(person.user.profile.photo.key, gravity: "face", height: 240, width: 240, crop: 'fill') %>
     <div class="card-member-infos">
