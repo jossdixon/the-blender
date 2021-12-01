@@ -6,7 +6,7 @@
     <div class="range-slider">
       <div class="d-flex align-items-center p-4">
         <%= f.input :weeks, label: false, input_html: { class:'range-slider__range', type:'range', value:'15', min: '1', max: '30' }, wrapper_html: { class:'m-0 w-100' } %>
-        <span class="range-slider__value">0</span>
+        <span class="range-slider__value">15</span>
       </div>
     </div>
     <% i = 1%>
@@ -18,7 +18,7 @@
       <div class="range-slider">
         <div class="d-flex align-items-center p-4">
           <%= loanee_form.input :total, label: false, input_html: { class:'range-slider__range', type:'range', value:'15000', min: '1000', max: '30000', step: '500' }, wrapper_html: { class:'m-0 w-100' } %>
-          <span class="range-slider__value">0</span>
+          $<span class="range-slider__value">15000</span>
         </div>
       </div>
       <% i += 1%>
