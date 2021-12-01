@@ -37,10 +37,10 @@
           <p><i class="fas fa-phone"></i>&nbsp;&nbsp;<%= @profile.phone_number %></p>
           <p><i class="fas fa-birthday-cake"></i>&nbsp;&nbsp;<%= @profile.birthday.strftime("%B %e, %Y") %></p>
           <p><i class="fas fa-file-signature"></i>&nbsp;&nbsp;<%= @profile.join_date.strftime("%B %e, %Y") %></p>
-          <p><%= @profile.user.debts.count %> Loans</p>
+          <p><%= @profile.user.debts.count %> <%="#{'Loan'.pluralize(@profile.user.debts.count)}"%></p>
           <% unless @profile.user.debts.count == 0 %>
             <% @profile.user.debts.each do |debt|%>
-              <p><small><%= link_to debt.loan.start_date.strftime("%b %e, %Y"), loan_path(debt.loan)%></small></p>
+              <p><%= link_to debt.loan.start_date.strftime("%b %e, %Y"), loan_path(debt.loan)%></p>
             <% end %>
           <% end %>
           <% unless @profile.user.active_debt.nil? %>
