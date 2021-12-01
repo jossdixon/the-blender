@@ -26,10 +26,10 @@
             <%= cl_image_tag(loanee.user.profile.photo.key, :transformation=>[
             {:gravity=>"face", :height=>80, :width=>80, :crop=>"fill"}, {:radius=>"max"}]) %>
             <%= loanee.user.full_name%>
-            <% expected_amount_group= expected_amount_group + (loanee.total / loan.weeks) %>
+            <% expected_amount_group= expected_amount_group + (loanee.total.to_f.round(2) / loan.weeks) %>
             <%loanee.weekly_payments.each do |weekly_payment| %>
               <%if weekly_payment.created_at.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d')%>
-                <% actual_amount_group= actual_amount_group + weekly_payment.amount%>
+                <% actual_amount_group= actual_amount_group + weekly_payment.amount.to_f.round(2)%>
               <% end %>
             <% end %>
           <% end %>
