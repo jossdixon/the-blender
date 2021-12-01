@@ -31,11 +31,14 @@ import { rangeSlider } from '../components/slider';
 import { action_button } from './action_button';
 // import { initSweetalert } from '../plugins/init_sweetalert';
 
+import { initFlatpickr } from "../plugins/flatpickr";
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   rangeSlider();
   action_button();
+  initFlatpickr();
   // initSweetalert('#sweet-alert-demo', {
   //   title: "Are you sure?",
   //   text: "This action cannot be reversed",
