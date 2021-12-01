@@ -35,7 +35,7 @@
             {:gravity=>"face", :height=>80, :width=>80, :crop=>"fill"}, {:radius=>"max"}]) %>
           <div class="flex-column">
             <p><%= link_to loanee.user.full_name, profile_path(loanee.user.profile)%></p>
-            <p>Amount due $<%= (loanee.total / loan.weeks).round %></p>
+            <p>Amount due $<%= (loanee.total.to_f / loan.weeks).round %></p>
           </div>
         <% end %>
       </div>

@@ -11,7 +11,7 @@ class Loan < ApplicationRecord
     self.loanees.each do |loanee|
       loanee.weekly_payments.each do |weekly_payment|
         if weekly_payment.created_at.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d')
-            actual_amount_group= actual_amount_group + weekly_payment.amount
+            actual_amount_group= actual_amount_group + weekly_payment.amount.to_f
         end
       end
     end
@@ -21,7 +21,7 @@ class Loan < ApplicationRecord
   def expected_amount_group
     expected_amount_group = 0
     self.loanees.each do |loanee|
-      expected_amount_group += (loanee.total / self.weeks)
+      expected_amount_group += (loanee.total.to_f / self.weeks)
     end
     expected_amount_group.round(2)
   end
@@ -29,7 +29,7 @@ class Loan < ApplicationRecord
     def loan_total
     loan_total = 0
     loanees.each do |loanee|
-      loan_total += loanee.total
+      loan_total += loanee.total.to_f
     end
     loan_total.round(2)
   end
