@@ -28,6 +28,7 @@ gem 'groupdate'
 
 
 
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -73,3 +74,5 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'pundit'
 
 gem 'faker'
+
+gem 'money-rails', '~>1.12'
