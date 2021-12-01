@@ -73,10 +73,10 @@ before_action :set_loan, only: [ :show ]
       expected_amount_group = 0
       actual_amount_group = 0
       loan.loanees.each do |loanee|
-          expected_amount_group =  expected_amount_group + (loanee.total / loan.weeks)
+          expected_amount_group =  expected_amount_group + (loanee.total.to_f / loan.weeks)
           loanee.weekly_payments.each do |weekly_payment|
           if weekly_payment.created_at.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d')
-              actual_amount_group = actual_amount_group + weekly_payment.amount
+              actual_amount_group += + weekly_payment.amount.to_f
           end
         end
       end
