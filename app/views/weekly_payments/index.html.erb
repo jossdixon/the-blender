@@ -11,10 +11,10 @@
         <p style="text-align:center;"><strong>Loan Repayment Chart</strong></p>
       </div>
       <div>
-        <p><i class="fas fa-money-check"></i> Loan#: <strong><i><%= @loanee.loan.id %></i></strong></p>
+        <p><i class="fas fa-money-check"></i> Loan#: <strong><i><%= link_to @loanee.loan.id, loan_path(@loanee.loan) %></i></strong></p>
         <p><i class="fas fa-calendar-day"></i> Loan Start Date: <strong><i><%= @loanee.loan.start_date %></i></strong></p>
         <p><i class="fas fa-user-clock"></i> Duration: <strong><i><%= @loanee.loan.weeks %></i></strong> weeks</p>
-        <p><i class="fas fa-coins"></i> Loan Total <%= @loanee.user.first_name %>: $<strong><i><%= @loanee.total %></i></strong></p>
+        <p><i class="fas fa-coins"></i> Loan Total: $<strong><i><%= @loanee.total %></i></strong></p>
         <p><i class="fas fa-comment-dollar"></i> Weekly Payment Amount: $<strong><i><%= @loanee.user.get_weeklypayment.round(2) %></i></strong></p>
       </div>
     </div>
@@ -25,8 +25,7 @@
           <%= render 'table', loanee:@loanee %>
           <br>
           <br>
-          <h3 style="text-align:center;">Next weekly payment date for <%= @loanee.user.first_name %> is on <i style="color:#DD7373;"><%= render 'next_payment', loanee:@loanee %></i></h3>
-        <br>
+          <p style="text-align:center;">Next weekly payment date for <%= @loanee.user.first_name %> is on <i><%= render 'next_payment', loanee:@loanee %></i></p>
         <div> <%= render 'payment_schedule', loanee:@loanee %></div>
         </div>
       <% else %>
