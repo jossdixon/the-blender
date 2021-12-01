@@ -5,6 +5,7 @@ class Loan < ApplicationRecord
 
   validates :weeks, presence: true
 
+
   def actual_amount_group
     actual_amount_group = 0
     self.loanees.each do |loanee|
