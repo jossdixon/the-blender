@@ -199,19 +199,55 @@
 }
 
 .card-dashboard-header {
-  width: 100%;
+  width:320px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 16px 16px;
   border-radius: 16px;
   background: #fff;
-
 
   h1 {
-    font-size: 24px;
+    font-size: 16px;
   }
+    .card-title-dash {
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+  }
+
+  }
+    .card-info-dash {
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    background-color: $blue;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    margin: 5px;
+    padding: 10px;
+
+    h2 {
+      font-size: 16px;
+    }
+  }
+
+.card-date {
+    background-color: #fff;
+    position: relative;
 }
+
+.card-date .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+}
+
+
 .card-dashboard-body {
-  width: 100%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 16px 16px;
   border-radius: 16px;
@@ -219,32 +255,7 @@
 
 }
 
-.card-title-dash {
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 15px;
-}
-.card-info-dash {
-  height: 60px;
 
-  justify-content: center;
-  align-items: center;
-  background-color: $blue;
-  color: white;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 5px;
-  padding: 10px;
-
-  h2 {
-    font-size: 16px;
-  }
-
-}
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
