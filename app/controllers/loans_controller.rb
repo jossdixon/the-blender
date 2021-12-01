@@ -1,8 +1,9 @@
 class LoansController < ApplicationController
 before_action :set_loan, only: [ :show ]
   def index
-    @date = params[:on_date] ? Date.parse(params[:on_date]) : Date.today
+    @date = params[:loans] && params[:loans][:on_date].present? ? Date.parse(params[:loans][:on_date]) : Date.today
     @loans = policy_scope(Loan)
+    # raise
     @loans_today = get_today_payments(@loans, @date)
     @amounts = get_expected_amount(@loans_today)
   end

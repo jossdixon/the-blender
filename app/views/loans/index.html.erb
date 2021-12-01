@@ -13,37 +13,39 @@
       <h2>Collected: $ <%= @amounts[:actual_amount_total].round%></h2>
       <h2>To be Collected <i class="fas fa-dollar-sign">  </i>  <%=@amounts[:expected_amount_total].round %> </h2>
     </div>
-    <%= form_tag(loans_path, method: :get) do %>
-      <div class="card-date">
-        <%= date_field_tag :on_date, params[:on_date],
-        class: "form-control" %>
-        <button name="button" type="submit" class="btn btn-search">
-          <i class="far fa-calendar-check"></i>
-        </button>
-      </div>
-    <% end %>
-  </div>
-  <div class="d-flex justify-content-around align-items-center p-3">
-  </div>
-  <% @loans_today.each do |loan| %>
-    <div class="card-dashboard-body">
-      <p>Loan id: <%= link_to loan.id, loan_path(loan) %></p>
-      <h3><%= loan.loanees.first.user.profile.village %></h3>
-      <div class="d-flex justify-content-around align-items-center p-3">
-        <%loan.loanees.each do |loanee| %>
-          <%= cl_image_tag(loanee.user.profile.photo.key, :transformation=>[
-            {:gravity=>"face", :height=>80, :width=>80, :crop=>"fill"}, {:radius=>"max"}]) %>
-          <div class="flex-column">
-            <p><%= link_to loanee.user.full_name, profile_path(loanee.user.profile)%></p>
-            <p>Amount due $<%= (loanee.total.to_f / loan.weeks).round %></p>
-          </div>
+    <%= simple_form_for :loans, method: "get" do |f| %>
+      <%# form_tag(loans_path, method: :get) do %>
+        <div class="card-date">
+          <%= f.input :on_date, as: :string, required: false, label: false,
+        input_html: { placeholder: "Choose date", class: "datepicker mt-3", value: params[:loans] && params[:loans][:on_date].present? ? params[:loans][:on_date] : "" } %>
+          <%# f.button :submit, "Go" %>
+          <%# <button name="button" type="submit" class="btn btn-search"> %>
+          <%# <p>Go</p> %>
+          <%# </button> %>
         <% end %>
       </div>
-      <div class="d-flex justify-content-around align-items-left px-3">
-        <p>$ <%= loan.expected_amount_group.round %> Expected per group</p>
-        <p> $ <%= loan.actual_amount_group.round %> Amount collected per group </p>
-      </div>
     </div>
-    <hr>
-  <% end %>
-</div>
+    <div class="d-flex justify-content-around align-items-center p-3">
+    </div>
+    <% @loans_today.each do |loan| %>
+      <div class="card-dashboard-body">
+        <p>Loan id: <%= link_to loan.id, loan_path(loan) %></p>
+        <h3><%= loan.loanees.first.user.profile.village %></h3>
+        <div class="d-flex justify-content-around align-items-center p-3">
+          <%loan.loanees.each do |loanee| %>
+            <%= cl_image_tag(loanee.user.profile.photo.key, :transformation=>[
+            {:gravity=>"face", :height=>80, :width=>80, :crop=>"fill"}, {:radius=>"max"}]) %>
+            <div class="flex-column">
+              <p><%= link_to loanee.user.full_name, profile_path(loanee.user.profile)%></p>
+              <p>Amount due $<%= (loanee.total.to_f / loan.weeks).round %></p>
+            </div>
+          <% end %>
+        </div>
+        <div class="d-flex justify-content-around align-items-left px-3">
+          <p>$ <%= loan.expected_amount_group.round %> Expected per group</p>
+          <p> $ <%= loan.actual_amount_group.round %> Amount collected per group </p>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
