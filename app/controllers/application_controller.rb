@@ -31,6 +31,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
+    if user.profile.nil?
     loans_path(user)
+    else
+    users_path(user)
+    end
   end
 end
