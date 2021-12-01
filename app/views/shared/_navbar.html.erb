@@ -11,17 +11,17 @@
         <!-- -->
         <li>
           <%= link_to users_path do %>
-            <i class="fas fa-file-contract fa-2x"></i>
+            <i class="fas fa-tachometer-alt fa-2x"></i>
           <% end %>
         </li>
         <li>
           <%= link_to new_loan_path do %>
-            <i class="fas fa-dollar-sign fa-2x"></i>
+            <i class="fas fa-file-invoice-dollar fa-2x"></i>
           <% end %>
         </li>
         <li>
           <%= link_to new_user_path do %>
-            <i class="fas fa-female fa-2x"></i>
+            <i class="fas fa-user-plus fa-2x"></i>
           <% end %>
         </li>
         <li>
@@ -34,8 +34,8 @@
             <i class="fas fa-sign-out-alt fa-2x"></i>
           <% end %>
         </li>
-        <% elsif user_signed_in? && current_user.profile.nil? == false %>
-                <li>
+      <% elsif user_signed_in? && current_user.profile.nil? == false %>
+        <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fas fa-sign-out-alt fa-2x"></i>
           <% end %>
@@ -44,7 +44,7 @@
       <% else%>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-    <% end %>
-  </ul>
-</nav>
-</div>
+        <% end %>
+      </ul>
+    </nav>
+  </div>

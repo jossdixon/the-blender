@@ -32,12 +32,12 @@
       </div>
       <div class="col-sm text-center">
         <div class="container mt-4">
-          <p><strong>Location: </strong><%= @profile.village %></p>
-          <p><strong>Business: </strong><%= @profile.business_type %></p>
-          <p><strong>Phone Number:</strong> <%= @profile.phone_number %></p>
-          <p><strong>Date of Birth:</strong> <%= @profile.birthday.strftime("%B %e, %Y") %></p>
-          <p><strong>Joined: </strong><%= @profile.join_date.strftime("%B %e, %Y") %></p>
-          <p><strong>Number of Loans: </strong><%= @profile.user.debts.count %></p>
+          <p><i class="fas fa-map-pin"></i>&nbsp;&nbsp;<%= @profile.village %></p>
+          <p><i class="fas fa-cash-register"></i>&nbsp;&nbsp;<%= @profile.business_type.titleize %></p>
+          <p><i class="fas fa-phone"></i>&nbsp;&nbsp;<%= @profile.phone_number %></p>
+          <p><i class="fas fa-birthday-cake"></i>&nbsp;&nbsp;<%= @profile.birthday.strftime("%B %e, %Y") %></p>
+          <p><i class="fas fa-file-signature"></i>&nbsp;&nbsp;<%= @profile.join_date.strftime("%B %e, %Y") %></p>
+          <p><%= @profile.user.debts.count %> Loans</p>
           <% unless @profile.user.debts.count == 0 %>
             <% @profile.user.debts.each do |debt|%>
               <p><small><%= link_to debt.loan.start_date.strftime("%b %e, %Y"), loan_path(debt.loan)%></small></p>
