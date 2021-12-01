@@ -13,8 +13,8 @@
         <% else %>
           <td class="name"><i><%= loanee.user.full_name%></i></td>
         <% end %>
-        <td><%= loanee.total %></td>
-        <td><%= (loanee.total / @loan.weeks).round(2) %></td>
+        <td><%= loanee.total.to_f.round(2) %></td>
+        <td><%= (loanee.total.to_f.round(2)/ @loan.weeks).round(2) %></td>
         <td><%= loanee.status %></td>
         <td><%= link_to edit_loanee_path(loanee.id) do %>
             <i class="fas fa-edit"></i>
