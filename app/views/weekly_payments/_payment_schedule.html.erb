@@ -3,7 +3,7 @@
   <% i = 1 %>
   <% @loanee.loan.weeks.times.each do |count_weeks| %>
     <%if count_weeks == payment_count%>
-      <div class="date-card col-md-2 rounded m-2" style="color:#DD7373;">
+      <div class="date-card col-md-2 rounded m-2" style="background-color:#DD7373;color:white;">
       <%= ((@loanee.loan.start_date) + (i * 7)).strftime('%Y-%m-%d') %>
       </div>
       <% i += 1 %>
