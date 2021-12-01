@@ -5,7 +5,7 @@
     <div class="card-title-dash">
       <h1>Today is <%= @date.strftime("%A %B %d %Y") %></h1>
       <%= form_tag(loans_path, method: :get) do %>
-        <%= date_field_tag :on_date %>
+        <%= date_field_tag :on_date, params[:on_date] %>
         <%= button_tag  %>
       <% end %>
     </div>

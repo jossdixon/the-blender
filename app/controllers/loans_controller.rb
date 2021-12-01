@@ -1,7 +1,7 @@
 class LoansController < ApplicationController
 before_action :set_loan, only: [ :show ]
   def index
-    @date = Date.parse(params[:on_date]) || Date.today
+    @date = params[:on_date] ? Date.parse(params[:on_date]) : Date.today
     @loans = policy_scope(Loan)
     @loans_today = get_today_payments(@loans, @date)
     @amounts = get_expected_amount(@loans_today)
@@ -17,7 +17,6 @@ before_action :set_loan, only: [ :show ]
       @loan_total = @loan_total + loanee.total
     end
     @percentage = (@progress/@loan_total)*100
-
   end
 
   def new
@@ -52,7 +51,7 @@ before_action :set_loan, only: [ :show ]
   end
 
   def get_today_payments(loans, on_date = Date.today)
-    loans_today= []
+    loans_today = []
     loans.each do |loan|
       i = 1
       loan.weeks.times do
