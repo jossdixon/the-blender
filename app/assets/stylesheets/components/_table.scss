@@ -1,9 +1,11 @@
 td {
   text-align: center;
+  font-size: 24px;
 }
 
 th {
   text-align: center;
+  font-size: 16px;
 }
 
 .overpay {
@@ -15,4 +17,10 @@ table{
    width:100%;
    table-layout: fixed;
    overflow-wrap: break-word;
+}
+
+
+td.name {
+  text-align: center;
+  font-size: 16px;
 }

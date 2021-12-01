@@ -28,10 +28,32 @@ class User < ApplicationRecord
     debts.first
   end
 
+  def percentage
+    get_payments_amount * 100 / get_total
+  end
+
   def payment_ratio
     # [['Task', 'Hours per Day'],
     [['Paid', get_payments_amount],
     ['Not paid', get_total - get_payments_amount]]
+  end
+
+  def payment_ratio_group
+    # [['Task', 'Hours per Day'],
+    [['Paid', get_payments_amount_group],
+    ['Not paid', get_total_group - get_payments_amount_group]]
+  end
+
+  def weekly_payment_graph
+    data_format = []
+    unless active_debt.nil?
+      active_debt.weekly_payments.each do |payment|
+        data_format << [payment.created_at.strftime("%B %d %Y"), payment.amount]
+      end
+    else
+      return data_format
+    end
+    return data_format
   end
 
   def get_payments_amount
@@ -52,6 +74,53 @@ class User < ApplicationRecord
     else
       return 0
     end
+  end
+
+  def get_payments_amount_group
+    payments_amount_group = 0
+    unless active_debt.nil?
+      active_debt.loan.loanees.each do |loanee|
+        loanee.weekly_payments.each do |payment|
+          payments_amount_group += payment.amount
+        end
+      end
+    else
+      return payments_amount_group
+    end
+    return payments_amount_group
+  end
+
+  def get_total_group
+    total = 0
+    unless active_debt.nil?
+      active_debt.loan.loanees.each do |loanee|
+        total += loanee.total
+      end
+    else
+      return total
+    end
+    return total
+  end
+
+  def multiple_chart
+    format_arr = []
+    active_debt.loan.loanees.each do |loanee|
+      data_arr = []
+      loanee.weekly_payments.each do |payment|
+        data_arr << ["#{payment.created_at.strftime("%B %d %Y")}", payment.amount.round(2)]
+      end
+      format_arr << {:name=>"#{loanee.user.first_name}", :data=>data_arr}
+    end
+    return format_arr
+
+    #      return  [
+    #   {:name=>"Golden State Warriors", :data=>[["2016-11-19T17:42:18.699Z", 0.6622516556291391], ["2016-11-20T07:56:55.662Z", 0.6622516556291391]]},
+    #   {:name=>"Los Angeles Clippers", :data=>[["2016-11-19T17:42:18.795Z", 0.1], ["2016-11-20T07:56:55.717Z", 0.1]]}
+    # ]
+  end
+
+  def get_weeklypayment
+    debts.last.total / debts.last.loan.weeks
   end
 
 
