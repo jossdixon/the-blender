@@ -4,19 +4,19 @@
   <% @loanee.loan.weeks.times.each do |count_weeks| %>
     <%if count_weeks == payment_count%>
       <div class="date-card col-md-2 m-2" style="background-color:#DD7373;color:#f5f5f5;border-radius:50%;">
-        <%= ((@loanee.loan.start_date) + (i * 7)).strftime('%Y-%m-%d') %>
+        <%= ((@loanee.loan.start_date) + (i * 7)).strftime('%y-%m-%d') %>
       </div>
       <% i += 1 %>
     <%elsif count_weeks < payment_count%>
       <%# <% if loanee.weekly_payments[(count_weeks - 1)].amount_cents / 100 <= loanee.user.get_weeklypayment%>
-          <div class="date-card col-md-2 m-2" style="background-color:#F5F5F5;border-radius:50%;"><%= ((@loanee.loan.start_date) + (i * 7)).strftime('%Y-%m-%d') %> <i class="fas fa-check-square" style="color:#309C76; font-size:12px;"></i></div>
+          <div class="date-card col-md-2 m-2" style="background-color:#F5F5F5;border-radius:50%;"><%= ((@loanee.loan.start_date) + (i * 7)).strftime('%y-%m-%d') %> <i class="fas fa-check-square" style="color:#309C76; font-size:12px;"></i></div>
           <% i += 1 %>
         <%# else %>
           <%#<div class="date-card col-md-2 m-2" style="background-color:#F5F5F5;border-radius:50%;"><%= ((@loanee.loan.start_date) + (i * 7)).strftime('%Y-%m-%d') %> <%#<i class="fas fa-exclamation-circle" style="color:#FCD581 font-size:12px;"></i></div> %>
           <%# i += 1 %>
       <%# end %>
     <% else %>
-      <div class="date-card col-md-2 m-2" style="border-radius:50%;background-color:#F5F5F5;"><%= ((@loanee.loan.start_date) + (i * 7)).strftime('%Y-%m-%d') %></div>
+      <div class="date-card col-md-2 m-2" style="border-radius:50%;background-color:#F5F5F5;"><%= ((@loanee.loan.start_date) + (i * 7)).strftime('%y-%m-%d') %></div>
       <% i += 1 %>
     <% end %>
   <% end %>
