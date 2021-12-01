@@ -50,7 +50,6 @@ document.addEventListener('turbolinks:load', () => {
   //     link.click();
   //   }
   // });
-
 });
 
 import "controllers"
