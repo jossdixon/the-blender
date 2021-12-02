@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-profile">
-    <h1><%= @loanee.user.first_name %>'s weekly payment information</h1>
+    <h1><%= @loanee.user.first_name %>'s Weekly Payment Information</h1>
     <br>
     <div class="row d-flex justify-content-around align-items-end">
       <div>
@@ -22,7 +22,7 @@
         <%= render 'table', loanee:@loanee %>
         <br>
         <br>
-        <p style="text-align:center;">Next payment date for <%= @loanee.user.first_name %> is due on <i><%= render 'next_payment', loanee:@loanee %></i></p>
+        <p style="text-align:center;">Next payment for <%= @loanee.user.first_name %> is due on <i><%= render 'next_payment', loanee:@loanee %></i></p>
         <div> <%= render 'payment_schedule', loanee:@loanee %></div>
       </div>
     <% else %>
