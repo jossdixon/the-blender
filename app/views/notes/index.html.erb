@@ -1,8 +1,8 @@
 <div class="container p-5">
-  <button class="btn btn-large" type="button" data-toggle="collapse" data-target="#collapseNote" aria-expanded="false" aria-controls="collapseNote">
-    New Note
-  </button>
   <div class="card-profile p-5">
+    <%= link_to profile_path(@profile) do%>
+      <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
+    <% end %>
     <div class="collapse" id="collapseNote">
       <h2>New Note about</h2>
       <h3>"<%= @profile.user.full_name.titleize%>"</h3>
@@ -24,8 +24,7 @@
       <% end %>
     </div>
   </div>
-  <br>
-  <%= link_to profile_path(@profile) do%>
-    <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
-  <% end %>
+  <button class="btn btn-large" type="button" data-toggle="collapse" data-target="#collapseNote" aria-expanded="false" aria-controls="collapseNote">
+    New Note
+  </button>
 </div>
