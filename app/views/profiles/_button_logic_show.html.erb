@@ -13,5 +13,6 @@
     <%= link_to "History", loanee_weekly_payments_path(Loanee.find(@profile.user.active_debt.id)), class: "btn btn-large" %>
   <% end %>
 <% else %>
-  <p class="mark"> This user has no active debts. </p>
+<br>
+  <p class="mark" style="text-align:center;"><small><i>This user has no active debts.</i></small> </p>
 <% end %>

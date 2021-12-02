@@ -27,7 +27,7 @@
         <% end %>
         <div class="d-flex justify-content-center">
           <%= render 'button_logic_show', profile:@profile %>
-          <% unless @profile.notes.nil? %>
+          <% unless @profile.user.debts ==[] %>
             <p><%= link_to 'Notes', profile_notes_path(@profile), class:"btn btn-large"%></p>
           <% end %>
         </div>
