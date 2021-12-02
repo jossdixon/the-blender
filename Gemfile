@@ -77,3 +77,4 @@ gem 'faker'
 
 gem 'money-rails', '~>1.12'
 
+gem "simple_calendar", "~> 2.4"

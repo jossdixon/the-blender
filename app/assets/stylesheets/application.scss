@@ -9,12 +9,15 @@
 @import "font-awesome";
 @import 'select2/dist/css/select2';
 @import "flatpickr/dist/themes/light";
+@import "simple_calendar";
 
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "pages/show";
+@import "components/simple_calendar";
+
 
 body {
   min-height: 100vh;
