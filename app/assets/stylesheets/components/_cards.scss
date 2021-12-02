@@ -142,6 +142,12 @@
     }
 }
 
+.card-text {
+  text-align: justify;
+  padding: 56px 0px;
+
+}
+
 .card-member {
   margin-top: 16px;
   overflow: hidden;
@@ -290,6 +296,7 @@
 @media (min-width: 992px) {
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
+
   }
 }
 
