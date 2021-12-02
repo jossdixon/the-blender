@@ -9,7 +9,7 @@
   <% elsif @profile.user.active_debt &&  total - paid_sum == 0%>
     <p class="mark-yellow" style="font-size: 24px"> This user has paid off the loan. </p>
   <% else %>
-    <p class="mark-red" style="font-size: 24px"> This user has over-paid. </p>
+    <p class="mark-red mt-4 mr-4" style="font-size: 18px;color:white;height:100%;width:25%;"> This borrower has over-paid. </p>
     <%= link_to "History", loanee_weekly_payments_path(Loanee.find(@profile.user.active_debt.id)), class: "btn btn-large" %>
   <% end %>
 <% else %>
