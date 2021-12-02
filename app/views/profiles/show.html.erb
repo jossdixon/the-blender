@@ -18,36 +18,45 @@
         <% end %>
       </div>
     </div>
-    <div class="row display-flex">
+    <div class="row d-flex">
       <div class="col-sm text-center">
         <%= cl_image_tag(@profile.photo.key, :transformation=>[{:gravity=>"face", :height=>240, :width=>240, :crop=>"fill"}, {:radius=>"max"}]) %>
         <h1><%= @profile.user.full_name.titleize %>
           <% unless @profile.user.debts==[] %>
             <%= render 'status' %></h1>
         <% end %>
-        <%= render 'button_logic_show', profile:@profile %>
-        <% unless @profile.notes.nil? %>
-          <p><%= link_to 'Notes', profile_notes_path(@profile), class:"btn btn-large"%></p>
-        <% end %>
-      </div>
-      <div class="col-sm text-center">
-        <div class="container mt-4">
-          <p><i class="fas fa-map-pin"></i>&nbsp;&nbsp;<%= @profile.village %></p>
-          <p><i class="fas fa-cash-register"></i>&nbsp;&nbsp;<%= @profile.business_type.titleize %></p>
-          <p><i class="fas fa-phone"></i>&nbsp;&nbsp;<%= @profile.phone_number %></p>
-          <p><i class="fas fa-birthday-cake"></i>&nbsp;&nbsp;<%= @profile.birthday.strftime("%B %e, %Y") %></p>
-          <p><i class="fas fa-file-signature"></i>&nbsp;&nbsp;<%= @profile.join_date.strftime("%B %e, %Y") %></p>
-          <p><%= @profile.user.debts.count %> <%="#{'Loan'.pluralize(@profile.user.debts.count)}"%></p>
-          <% unless @profile.user.debts.count == 0 %>
-            <% @profile.user.debts.each do |debt|%>
-              <p><%= link_to debt.loan.start_date.strftime("%b %e, %Y"), loan_path(debt.loan)%></p>
-            <% end %>
-          <% end %>
-          <% unless @profile.user.active_debt.nil? %>
-            <%= render 'group' %>
+        <div class="d-flex justify-content-center">
+          <%= render 'button_logic_show', profile:@profile %>
+          <% unless @profile.user.debts ==[] %>
+            <p><%= link_to 'Notes', profile_notes_path(@profile), class:"btn btn-large"%></p>
           <% end %>
         </div>
       </div>
     </div>
+    <% unless @profile.user.debts == [] %>
+      <div class="d-flex justify-content-center">
+        <div class="row d-flex ">
+          <div class="col-4">
+            <div class="card-text">
+              <p><i class="fas fa-map-pin"></i>&nbsp;&nbsp;<%= @profile.village %></p>
+              <p><i class="fas fa-cash-register"></i>&nbsp;&nbsp;<%= @profile.business_type.titleize %></p>
+              <p><i class="fas fa-phone"></i>&nbsp;&nbsp;<%= @profile.phone_number %></p>
+              <p><i class="fas fa-birthday-cake"></i>&nbsp;&nbsp;<%= @profile.birthday.strftime("%B %e, %Y") %></p>
+              <p><i class="fas fa-file-signature"></i>&nbsp;&nbsp;<%= @profile.join_date.strftime("%B %e, %Y") %></p>
+            </div>
+          </div>
+          <div class="col-8">
+            <% unless @profile.user.active_debt.nil? %>
+              <%= render 'group' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+    <div class="row d-flex justify-content-around">
+      <div><%= render 'profile_info', profile:@profile %></div>
+      <div><%= link_to 'Notes', profile_notes_path(@profile), class:"btn btn-large"%></div>
+    </div>
+    <% end %>
   </div>
 </div>

@@ -49,5 +49,4 @@ before_action :set_loan, only: [ :show ]
   def loan_params
     params.require(:loan).permit(:weeks, :start_date, loanees_attributes: [ :user_id, :total, :status])
   end
-
 end

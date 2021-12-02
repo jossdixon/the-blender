@@ -1,8 +1,6 @@
-<%if user.active_debt.weekly_payments.any?%>
-<% payment_count = user.active_debt.weekly_payments.count %>
-<% user.active_debt.weekly_payments.first(payment_count).each do |weekly_payment|%>
-    <% if weekly_payment == user.active_debt.weekly_payments.first(payment_count).last && payment_count != user.active_debt.loan.weeks %>
-      <%= ((user.active_debt.loan.start_date) + ((payment_count + 1) * 7)).strftime("%A %B %d %Y") %>
-    <% end %>
+  <% i = 1 %>
+<% @user.debts.last.weekly_payments.order(created_at: :asc).each do |weekly_payment| %>
+  <% i += 1 %>
 <% end %>
-<% end %>
+<% rest = @user.debts.last.loan.weeks - @user.debts.last.weekly_payments.count %>
+<%= ((@user.debts.last.loan.start_date) + (i * 7)).strftime('%y-%m-%d') %>

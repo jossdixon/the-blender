@@ -7,8 +7,8 @@
     </div>
     <div class="card-info-dash">
       <p><%= @loans_today.count*3 %> members in <%= @loans_today.count %> loan <%="#{'group'.pluralize(@loans_today.count)}"%>.</p>
-      <p>$<%=@amounts[:expected_amount_total].round %> total to be collected.</p>
-      <p>You've collected $<%= @amounts[:actual_amount_total].round%>.</p>
+      <p>$<%= @amounts[:expected_amount_total].round %> total to be collected.</p>
+      <p>You've collected $<%= @amounts[:actual_amount_total].round %>.</p>
     </div>
     <%# simple_form_for :loans, method: "get" do |f| %>
       <%# <div class="card-date"> %>

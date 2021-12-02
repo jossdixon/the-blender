@@ -101,7 +101,7 @@
   }
   h1 {
     font-size: 32px;
-    padding: 8px;
+    padding: 32px;
   }
   h2 {
     font-size: 24px;
@@ -140,6 +140,12 @@
     td {
       padding: 16px;
     }
+}
+
+.card-text {
+  text-align: justify;
+  padding: 72px 10px;
+
 }
 
 .card-member {
@@ -264,6 +270,9 @@
 
 }
 
+.notes {
+  color: rgb(165, 164, 164);
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
@@ -290,6 +299,7 @@
 @media (min-width: 992px) {
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
+
   }
 }
 
