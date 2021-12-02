@@ -49,6 +49,6 @@ class WeeklyPaymentsController < ApplicationController
   private
 
   def weekly_payment_params
-    params.require(:weekly_payment).permit(:loanee_id, :amount)
+    params.require(:weekly_payment).permit(:loanee_id, :amount, :amount_cents)
   end
 end
