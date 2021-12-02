@@ -1,8 +1,9 @@
 class NotesController < ApplicationController
 before_action :set_note, only: [ :show]
   def index
-    @notes = policy_scope(Note)
     @profile = Profile.find(params[:profile_id])
+    @notes = policy_scope(@profile.notes)
+    @note = Note.new
   end
 
   def show
