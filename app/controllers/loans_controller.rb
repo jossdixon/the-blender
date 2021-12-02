@@ -3,7 +3,10 @@ before_action :set_loan, only: [ :show ]
   def index
     @date = params[:loans] && params[:loans][:on_date].present? ? Date.parse(params[:loans][:on_date]) : Date.today
     @loans = policy_scope(Loan)
+
     # raise
+    # 1.either: Queryforall the ones created today
+    # 2. Find out why the Loan scope is not including loans with payments from today
     @loans_today = get_today_payments(@loans, @date)
     @amounts = get_expected_amount(@loans_today)
   end
@@ -51,7 +54,7 @@ before_action :set_loan, only: [ :show ]
     params.require(:loan).permit(:weeks, :start_date, loanees_attributes: [ :user_id, :total, :status])
   end
 
-  def get_today_payments(loans, on_date = Date.today)
+  def get_today_payments(loans, on_date = Date.today )
     loans_today = []
     loans.each do |loan|
       i = 1
@@ -65,6 +68,21 @@ before_action :set_loan, only: [ :show ]
     loans_today
   end
 
+
+  # def get_today_weekly_payments(loans, on_date = Date.today)
+  #   payments_today = []
+  #   loans.each do |loan|
+  #     i = 1
+  #     loan.weeks.times do
+  #       if ((loan.start_date) + (i * 7)) == on_date
+  #         loans_today << loan
+  #         i = i + 1
+  #       end
+  #     end
+  #   end
+  #   payments_today
+  # end
+
   def get_expected_amount(loans)
     amounts = {
     actual_amount_total: 0,
@@ -74,10 +92,10 @@ before_action :set_loan, only: [ :show ]
       expected_amount_group = 0
       actual_amount_group = 0
       loan.loanees.each do |loanee|
-          expected_amount_group =  expected_amount_group + (loanee.total.to_f / loan.weeks)
+          expected_amount_group =  expected_amount_group + (loanee.total.to_f.round(2) / loan.weeks)
           loanee.weekly_payments.each do |weekly_payment|
-          if weekly_payment.created_at.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d')
-              actual_amount_group += + weekly_payment.amount.to_f
+            if weekly_payment.created_at.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d')
+              actual_amount_group += weekly_payment.amount.to_f
           end
         end
       end
