@@ -9,10 +9,10 @@
   <div>
     <br>
     <div class="row d-flex justify-content-around align-items-end">
-    <div><%= render 'group_chart', loan:@loan %><h3 style="text-align:center;">Group payment chart</h3></div>
+    <div class="col-md-auto"><%= render 'group_chart', loan:@loan %><h3 style="text-align:center;">Group payment chart</h3></div>
     <br>
     <br>
-    <div><p><i class="fas fa-calendar-day"></i> Loan Start Date: <%= @loan.start_date.strftime("%A %b %d") %></p>
+    <div class="col-md-auto"><p><i class="fas fa-calendar-day"></i> Loan Start Date: <%= @loan.start_date.strftime("%A %b %d") %></p>
     <p><i class="fas fa-user-clock"></i> Duration: <strong><%= @loan.weeks %> weeks</strong></p>
     <p><i class="fas fa-coins"></i> Loan Total: $<strong><i><%= @loan.loan_total %></i></strong></p></div>
     </div>
