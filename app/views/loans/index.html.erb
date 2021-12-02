@@ -7,8 +7,12 @@
     </div>
     <div class="card-info-dash">
       <p><%= @loans_today.count*3 %> members in <%= @loans_today.count %> loan <%="#{'group'.pluralize(@loans_today.count)}"%>.</p>
-      <p>$<%= @amounts[:expected_amount_total].round %> total to be collected.</p>
-      <p>You've collected $<%= @amounts[:actual_amount_total].round %>.</p>
+    </div>
+    <div class="card-info-dash">
+      <p>Your collection total for today is</p>
+      <p style="font-size: 48px">$<%= @amounts[:expected_amount_total].round %></p>
+      <p>You've collected</p>
+      <p style="font-size: 48px">$<%= @amounts[:actual_amount_total].round %></p>
     </div>
   </div>
   <div class="card-dashboard-header my-3">
