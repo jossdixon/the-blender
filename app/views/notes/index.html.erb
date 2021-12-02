@@ -3,14 +3,14 @@
     New Note
   </button>
   <div class="card-profile p-5">
-  <div class="collapse" id="collapseNote">
-    <h2>New Note about</h2>
-    <h3>"<%= @profile.user.full_name.titleize%>"</h3>
-    <br>
-    <%= render 'form', profile:@profile, note:@note%>
-  </div>
+    <div class="collapse" id="collapseNote">
+      <h2>New Note about</h2>
+      <h3>"<%= @profile.user.full_name.titleize%>"</h3>
+      <br>
+      <%= render 'form', profile:@profile, note:@note%>
+    </div>
     <div class="notes">
-    <br>
+      <br>
       <h2>Notes</h2>
       <br>
       <% if @notes.any? %>
@@ -25,7 +25,7 @@
     </div>
   </div>
   <br>
-      <%= link_to profile_path(@profile) do%>
-        <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
-      <% end %>
+  <%= link_to profile_path(@profile) do%>
+    <p><i class="fas fa-long-arrow-alt-left fa-2x"></i></p>
+  <% end %>
 </div>
