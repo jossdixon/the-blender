@@ -17,7 +17,7 @@
         <%= f.input :amount, label: 'Enter amount', input_html: {value: "#{(@profile.user.debts.last.total.round(2) / @profile.user.debts.last.loan.weeks).round(2) }"} %>
         <%# <p id="sweet-alert-demo" class="btn btn-primary">Confirm</p> %>
         <%# <%= f.submit "", id:"confirm-link", class:"hidden" %>
-        <%= f.submit "confirm", class:"btn btn-primary" %>
+        <%= f.submit "Confirm", class:"btn btn-primary" %>
         <% end %>
       </div>
       <div class="modal-footer" style="text-align:center;">
