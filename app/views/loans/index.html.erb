@@ -2,19 +2,26 @@
   <div class="card-dashboard-header">
     <% expected_amount_total = 0 %>
     <% actual_amount_total = 0 %>
-    <div class="card-title-dash">
-      <h1><%= @date.strftime("%A, %B %e %Y") %></h1>
+    <div class="card-info-dash-title mt-5">
+      <h1 style="font-size:36px;"><%= @date.strftime("%A, %B %e %Y") %></h1>
+  </div>
+  <br>
+  <div class="row d-flex justify-content-around">
+    <div class="card-info-dash col-md-3">
+    <p id="display"><%= @loans_today.count*3 %></p>
+    <p >members in <%= @loans_today.count %> <%="#{'group'.pluralize(@loans_today.count)}"%></p>
     </div>
-    <div class="card-info-dash">
-      <p><%= @loans_today.count*3 %> members in <%= @loans_today.count %> loan <%="#{'group'.pluralize(@loans_today.count)}"%>.</p>
+    <div class="card-info-dash col-md-3" style="font-size: 24px;">
+    <p id="display">$<%= @amounts[:expected_amount_total].round %></p>
+      <p>total to be collected</p>
     </div>
-    <div class="card-info-dash">
-      <p>Your collection total for today is</p>
-      <p style="font-size: 48px">$<%= @amounts[:expected_amount_total].round %></p>
-      <p>You've collected</p>
-      <p style="font-size: 48px">$<%= @amounts[:actual_amount_total].round %></p>
+    <div class="card-info-dash col-md-3">
+    <p id="display">$<%= @amounts[:actual_amount_total].round %></p>
+      <p>was collected today</p>
     </div>
   </div>
+      </div>
+  <br>
   <div class="card-dashboard-header my-3">
     <div class="simple-calendar" id="calendar">
       <%= month_calendar(events: @loans) do |date, loans| %>
@@ -27,3 +34,4 @@
       <% end %>
     </div>
   </div>
+</div>
