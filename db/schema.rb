@@ -92,11 +92,10 @@ ActiveRecord::Schema.define(version: 2021_12_01_054831) do
 
   create_table "weekly_payments", force: :cascade do |t|
     t.bigint "loanee_id", null: false
-    # t.float "amount"
+    t.float "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "amount_cents", default: 0, null: false
-    t.string "amount_currency", default: 0, null: false
     t.index ["loanee_id"], name: "index_weekly_payments_on_loanee_id"
   end
 
