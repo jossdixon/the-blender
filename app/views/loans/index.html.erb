@@ -25,10 +25,11 @@
   <div class="card-dashboard-header my-3">
     <div class="simple-calendar" id="calendar">
       <%= month_calendar(events: @loans) do |date, loans| %>
+        <%= puts date %>
         <strong><%= date.day %></strong>
         <div class="simple-calendar-info">
-          <% if Loan.get_today_payments(date).any? %>
-            <i class="fas fa-user-alt"></i> <%= Loan.get_today_payments(date).count * 3 %>
+          <% if @dates_hash[date] %>
+            <i class="fas fa-user-alt"></i> <%= @dates_hash[date] %>
           <% end %>
         </div>
       <% end %>

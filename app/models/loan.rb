@@ -51,6 +51,20 @@ class Loan < ApplicationRecord
     loans_today
   end
 
+  def self.dates_to_loanee_count(loans)
+    loans.each_with_object({}) do |loan, hash|
+      i = 1
+      loan.weeks.times do
+        relevant_date = ((loan.start_date) + (i * 7))
+
+        hash[relevant_date] ||= 0
+        hash[relevant_date] += loan.loanees.count
+
+        i = i + 1
+        end
+      end
+  end
+
   def self.get_expected_amount(loans)
     amounts = {
     actual_amount_total: 0,
