@@ -6,17 +6,18 @@
       <h1 style="font-size:36px;"><%= @date.strftime("%A, %B %e %Y") %></h1>
     </div>
     <br>
-    <div class="row d-flex justify-content-around">
+    <div class="row d-flex justify-content-around align-items-end">
       <div class="card-info-dash col-md-3">
-        <p style="font-size: 32px"><%= @loans_today.count*3 %> members in <%= @loans_today.count %> <%="#{'group'.pluralize(@loans_today.count)}"%>.</p>
+        <p id="display"><%= @loans_today.count*3 %><%#= @loans_today.count %> <%#="#{'group'.pluralize(@loans_today.count)}"%></p>
+        <p style="font-size: 24px;">members</p>
       </div>
       <div class="card-info-dash col-md-3" style="font-size: 24px;">
         <p id="display">$<%= @amounts[:expected_amount_total].round %></p>
-        <p>total to be collected.</p>
+        <p style="font-size: 24px;">total to be collected</p>
       </div>
       <div class="card-info-dash col-md-3">
         <p id="display">$<%= @amounts[:actual_amount_total].round %></p>
-        <p>collected today.</p>
+        <p style="font-size: 24px;">collected today</p>
       </div>
     </div>
   </div>
