@@ -228,6 +228,7 @@
   }
     .card-info-dash {
     // text-align: center;
+
     height: 200px;
     justify-content: center;
     background-color:$blue;
@@ -237,11 +238,8 @@
     // box-shadow: 0 0 15px rgba(0,0,0,0.2);
     // margin: 8px;
   padding: 8px;
-  background: $blue;
-  // box-shadow: 20px 20px 0 0 $blue; // #BFD8BD;
-  // border-top: 2em solid #DDE7C7;
-  max-width:80%;
-
+  // background: #478563;
+background-image: linear-gradient(to right top, #e0e9ea, #baced3, #97b3be, #7797ab, #5a7c98);
 
     #display {
       font-size: 42px;
