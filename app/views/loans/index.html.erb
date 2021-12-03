@@ -12,11 +12,11 @@
         <p style="font-size: 24px;">members</p>
       </div>
       <div class="card-info-dash col-md-3" style="font-size: 24px;">
-        <p id="display">$<%= @amounts[:expected_amount_total].round %></p>
+        <p id="display">$<%= @amounts[:expected_amount_total].round.to_s(:delimited) %></p>
         <p style="font-size: 24px;">total to be collected</p>
       </div>
       <div class="card-info-dash col-md-3">
-        <p id="display">$<%= @amounts[:actual_amount_total].round %></p>
+        <p id="display">$<%= @amounts[:actual_amount_total].round.to_s(:delimited) %></p>
         <p style="font-size: 24px;">collected today</p>
       </div>
     </div>
