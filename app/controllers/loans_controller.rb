@@ -3,6 +3,7 @@ before_action :set_loan, only: [ :show ]
   def index
     @date = params[:loans] && params[:loans][:on_date].present? ? Date.parse(params[:loans][:on_date]) : Date.today
     @loans = policy_scope(Loan)
+    @dates_hash = Loan.dates_to_loanee_count(@loans)
     @weekly_payments = WeeklyPayment.all
     @loans_today = Loan.get_today_payments(@date)
     @amounts = Loan.get_expected_amount(@loans_today)
