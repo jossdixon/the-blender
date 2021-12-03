@@ -1,14 +1,14 @@
 require 'csv'
 require "open-uri"
 
-puts "Obliterating loans, loanees, weekly payments, users, and profiles..."
+puts "Obliterating all records..."
 Loanee.destroy_all
 Loan.destroy_all
 Profile.destroy_all
 User.destroy_all
 
 puts "Seeding..."
-User.create(first_name: 'Michiharu', last_name: 'Ono', email: 'michi@theblender.one', password: '123450987' )
+User.create(first_name: 'Joss', last_name: 'Dixon', email: 'joss@theblender.one', password: 'password' )
 
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row, header_converters: :symbol }
 filepath    = File.join(__dir__,'users.csv')
@@ -37,21 +37,5 @@ profile = Profile.new(
 profile.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 profile.save!
 end
-puts "Creating loans..."
-7.times do
-  loan = Loan.new(
-    weeks: rand(4..25),
-    start_date: Date.today + rand(-30..30),
-    user: User.first
-  )
-  loan.save!
-  3.times do
-    Loanee.create!(
-      loan: loan,
-      total: rand(1000..5000),
-      user: User.includes(:loanees, :profile).where(loanees: { user_id: nil }).where.not(profiles: { user_id: nil }).sample,
-      status: [0, 2, 3].sample
-    )
-  end
-end
+
 puts "Seeding done."
